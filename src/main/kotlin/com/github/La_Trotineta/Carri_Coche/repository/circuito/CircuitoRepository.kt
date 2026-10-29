@@ -1,17 +1,17 @@
 package com.github.La_Trotineta.Carri_Coche.repository
 
 import com.github.La_Trotineta.Carri_Coche.model.Circuito
+import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
 import org.springframework.stereotype.Repository
+import utilidad.leerDatosCircuitoCSV
+import java.nio.file.Path
+
 
 @Repository
 class CircuitoRepository {
-
+    val rutaCSV = Path.of("datos","circuitos","circuitos.csv")
     // La lista en memoria se traslada aquí y actúa como nuestra "Base de Datos" temporal
-    private val circuitos = mutableListOf(
-        Circuito(1,"Spa-Francorchamps","Bélgica",20,7.004),
-        Circuito(2, "Monza","Italia",11,5.793),
-        Circuito(5, "Catalunya","España",14,4.657),
-    )
+    private val circuitos = leerDatosCircuitoCSV(rutaCSV) as MutableList<Circuito>
 
     fun leerTodosCircuitos(): MutableList<Circuito> = circuitos
 
@@ -26,6 +26,11 @@ class CircuitoRepository {
             // Creación de nueva planta (simulación de ID autoincremental)
             val nuevoId = (circuitos.maxOfOrNull { it.id_circuito } ?: 0) + 1
             circuitos.add(circuito.copy(id_circuito = nuevoId))
+        }
+        csvWriter { delimiter = ';' }.open(rutaCSV.toFile()) {
+            circuitos.forEach { c ->
+                writeRow(c.id_circuito, c.nombre, c.pais, c.curvas, c.longitud)
+            }
         }
     }
 
