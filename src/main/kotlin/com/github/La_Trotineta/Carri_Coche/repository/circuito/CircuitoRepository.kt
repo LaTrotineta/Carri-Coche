@@ -2,16 +2,15 @@ package com.github.La_Trotineta.Carri_Coche.repository
 
 import com.github.La_Trotineta.Carri_Coche.model.Circuito
 import org.springframework.stereotype.Repository
+import utilidad.leerDatosCircuitoCSV
+import java.nio.file.Path
+
 
 @Repository
 class CircuitoRepository {
-
+    val rutaCSV = Path.of("datos","circuitos.csv")
     // La lista en memoria se traslada aquí y actúa como nuestra "Base de Datos" temporal
-    private val circuitos = mutableListOf(
-        Circuito(1,"Spa-Francorchamps","Bélgica",20,7.004),
-        Circuito(2, "Monza","Italia",11,5.793),
-        Circuito(5, "Catalunya","España",14,4.657),
-    )
+    private val circuitos = leerDatosCircuitoCSV(rutaCSV) as MutableList<Circuito>
 
     fun leerTodosCircuitos(): MutableList<Circuito> = circuitos
 
