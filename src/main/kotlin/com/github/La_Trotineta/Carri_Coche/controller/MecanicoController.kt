@@ -13,15 +13,15 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
     @GetMapping("/mecanicos")
     fun listarMecanicos(model: Model): String {
         model.addAttribute("mecanicos", mecanicoServicio.listar())
-        return "mecanicos"
+        return "mecanicos/mecanicos"
     }
 
     // 2. DETALLE
     @GetMapping("/mecanico/{id_mecanico}")
     fun verMecanico(@PathVariable id_mecanico: Int, model: Model): String {
         val mecanico = mecanicoServicio.buscar(id_mecanico) ?: return "errorMecanico"
-        model.addAttribute("planta", mecanico)
-        return "detalleMecanico"
+        model.addAttribute("mecanico", mecanico)
+        return "mecanicos/detalleMecanico"
     }
 
     // 3. FORMULARIO NUEVA PLANTA (pasa un objeto vacío con ID 0)
@@ -30,16 +30,16 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
         val mecanicoVacio = Mecanico(0, "", "", 0, 0.0)
         model.addAttribute("mecanico", mecanicoVacio)
         model.addAttribute("titulo", "Nuevo Mecanico")
-        return "formMecanico"
+        return "mecanicos/formMecanico"
     }
 
     // 4. FORMULARIO EDITAR PLANTA (pasa el objeto existente)
-    @GetMapping("/plantas/editar/{id_planta}")
+    @GetMapping("/mecanicos/editar/{id_mecanico}")
     fun editarMecanico(@PathVariable id_mecanico: Int, model: Model): String {
         val mecanico = mecanicoServicio.buscar(id_mecanico) ?: return "redirect:/mecanicos"
         model.addAttribute("mecanico", mecanico)
         model.addAttribute("titulo", "Editar Mecanico")
-        return "formMecanico"
+        return "mecanicos/formMecanico"
     }
 
     // 5. PROCESAR GUARDADO (Sirve tanto para crear como para editar)
@@ -53,6 +53,6 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
     @GetMapping("/mecanicos/borrar/{id_mecanico}")
     fun borrarMecanico(@PathVariable id_mecanico: Int): String {
         mecanicoServicio.borrar(id_mecanico)
-        return "redirect:/plantas"
+        return "redirect:/mecanicos"
     }
 }
