@@ -2,12 +2,14 @@ package com.github.La_Trotineta.Carri_Coche.controller
 
 import com.github.La_Trotineta.Carri_Coche.model.Pieza
 import com.github.La_Trotineta.Carri_Coche.service.PiezaService
+import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 
+@Controller
 class PiezaController (private val piezaService : PiezaService) {
     // 1. LISTAR
     @GetMapping("/piezas")
