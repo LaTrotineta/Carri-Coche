@@ -8,7 +8,7 @@ import java.nio.file.Path
 
 @Repository
 class CircuitoRepository {
-    val rutaCSV = Path.of("datos","circuitos.csv")
+    val rutaCSV = Path.of("datos","circuitos","circuitos.csv")
     // La lista en memoria se traslada aquí y actúa como nuestra "Base de Datos" temporal
     private val circuitos = leerDatosCircuitoCSV(rutaCSV) as MutableList<Circuito>
 
