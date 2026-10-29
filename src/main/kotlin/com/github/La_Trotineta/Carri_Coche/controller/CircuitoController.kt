@@ -13,7 +13,7 @@ class CircuitoController(private val circuitoService: CircuitoService) {
     @GetMapping("/circuitos")
     fun listarPlantas(model: Model): String {
         model.addAttribute("circuitos", circuitoService.listar())
-        return "circuitos"
+        return "circuitos/circuitos"
     }
 
     // 2. DETALLE
