@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>La Tritoneta - Página no encontrada</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #0b0e14; color: #fff; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+
+        .error-card {
+            background: #121722; padding: 50px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+            max-width: 500px; width: 90%; position: relative; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .error-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #1e56ff, #ff1d35);
+        }
+        .code-404 { font-size: 6rem; font-weight: 900; color: #ff1d35; letter-spacing: -2px; margin-bottom: 10px; }
+        .error-title { font-size: 1.5rem; text-transform: uppercase; margin-bottom: 15px; font-weight: 800; }
+        .error-msg { color: #9ca3af; font-size: 0.9rem; margin-bottom: 30px; }
+        .btn-home {
+            background-color: #1e56ff; color: #fff; padding: 12px 25px; border-radius: 6px;
+            text-decoration: none; font-weight: bold; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-home:hover { background-color: #003cd6; }
+    </style>
+</head>
+<body>
+
+<div class="error-card">
+    <div class="code-404">404</div>
+    <h2 class="error-title">¡PÁGINA NO ENCONTRADA!</h2>
+    <p class="error-msg">El vehículo o sección que estás buscando no existe en el catálogo de La Tritoneta.</p>
+    <a href=".." class="btn-home"><i class="fas fa-arrow-left"></i> VOLVER AL INICIO</a>
+</div>
+
+</body>
+</html>
