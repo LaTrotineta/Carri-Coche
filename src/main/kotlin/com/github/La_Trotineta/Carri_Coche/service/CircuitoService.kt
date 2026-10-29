@@ -8,7 +8,6 @@ import java.nio.file.Path
 
 @Service
 class CircuitoService(private val repository: CircuitoRepository) {
-    val rutaCSV = Path.of("datos","circuitos.csv")
 
     fun listar(): List<Circuito> = repository.leerTodosCircuitos()
 

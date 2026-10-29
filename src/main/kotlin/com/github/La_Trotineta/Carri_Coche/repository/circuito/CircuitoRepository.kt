@@ -1,6 +1,7 @@
 package com.github.La_Trotineta.Carri_Coche.repository
 
 import com.github.La_Trotineta.Carri_Coche.model.Circuito
+import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
 import org.springframework.stereotype.Repository
 import utilidad.leerDatosCircuitoCSV
 import java.nio.file.Path
@@ -25,6 +26,11 @@ class CircuitoRepository {
             // Creación de nueva planta (simulación de ID autoincremental)
             val nuevoId = (circuitos.maxOfOrNull { it.id_circuito } ?: 0) + 1
             circuitos.add(circuito.copy(id_circuito = nuevoId))
+        }
+        csvWriter { delimiter = ';' }.open(rutaCSV.toFile()) {
+            circuitos.forEach { c ->
+                writeRow(c.id_circuito, c.nombre, c.pais, c.curvas, c.longitud)
+            }
         }
     }
 
