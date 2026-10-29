@@ -8,7 +8,7 @@ import java.nio.file.Paths
 
 @Repository
 class CocheRepository {
-    private val gestor: GestorCocheCSV = GestorCocheCSV(Paths.get(object {}.javaClass.getResource("/coche.csv").toURI()))
+    private val gestor: GestorCocheCSV = GestorCocheCSV(Paths.get(object {}.javaClass.getResource("/data/coche.csv").toURI()))
     private val coches: MutableMap<String, Coche> = gestor.leerCSV().associateBy { it.matricula } as MutableMap<String, Coche>
 
     fun leerTodosCoches(): List<Coche> = coches.values.toList()
