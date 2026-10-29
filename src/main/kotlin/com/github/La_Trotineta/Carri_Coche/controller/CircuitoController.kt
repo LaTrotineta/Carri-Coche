@@ -23,7 +23,6 @@ class CircuitoController(private val circuitoService: CircuitoService) {
         model.addAttribute("circuito", circuito)
         return "detalleCircuito"
     }
-
     // 3. FORMULARIO NUEVA PLANTA (pasa un objeto vacío con ID 0)
     @GetMapping("/circuitos/nueva")
     fun nuevoCircuito(model: Model): String {
