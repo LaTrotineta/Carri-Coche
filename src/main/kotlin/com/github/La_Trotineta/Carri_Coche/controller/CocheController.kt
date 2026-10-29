@@ -14,14 +14,14 @@ class CocheController(private val cocheService: CocheService) {
     @GetMapping("/coches")
     fun listarCoches(model: Model): String {
         model.addAttribute("coches", cocheService.listar())
-        return "coches"
+        return "coches/coches"
     }
 
     @GetMapping("/coche/{matricula}")
     fun verCoche(@PathVariable matricula: String, model: Model): String {
         val coche = cocheService.buscar(matricula) ?: return "error"
         model.addAttribute("coche", coche)
-        return "detalleCoche"
+        return "coches/detalleCoche"
     }
 
     @GetMapping("/coches/nuevo")
@@ -29,7 +29,7 @@ class CocheController(private val cocheService: CocheService) {
         val cocheVacio = Coche("", "", "", 0, 0.0)
         model.addAttribute("coche", cocheVacio)
         model.addAttribute("titulo", "Nueva Coche")
-        return "formCoche"
+        return "coches/formCoche"
     }
 
     @GetMapping("/coches/editar/{matricula}")
@@ -37,7 +37,7 @@ class CocheController(private val cocheService: CocheService) {
         val coche = cocheService.buscar(matricula) ?: return "redirect:/coches"
         model.addAttribute("coche", coche)
         model.addAttribute("titulo", "Editar Coche")
-        return "formCoche"
+        return "coches/formCoche"
     }
 
     // 5. PROCESAR GUARDADO (Sirve tanto para crear como para editar)
