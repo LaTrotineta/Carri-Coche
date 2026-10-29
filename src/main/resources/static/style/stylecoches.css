@@ -86,7 +86,7 @@ body {
 }
 
 .coche-card:hover {
-    border-color: #1e56ff;
+    border-color: #ff1d35;
     transform: translateY(-5px);
 }
 
@@ -121,7 +121,7 @@ body {
 }
 
 .coche-marca {
-    color: #1e56ff;
+    color: #ff1d35;
     font-weight: 800;
     font-size: 1.1rem;
     margin-bottom: 12px;

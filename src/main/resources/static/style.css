@@ -9,6 +9,11 @@ a {
     color: white;
 }
 
+img {
+    filter: brightness(0.5);
+    opacity: 0.8;
+}
+
 body {
     background-color: #0b0e14;
     color: #ffffff;

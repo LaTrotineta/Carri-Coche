@@ -21,7 +21,7 @@ class CircuitoController(private val circuitoService: CircuitoService) {
     fun verCircuito(@PathVariable id_circuito: Int, model: Model): String {
         val circuito = circuitoService.buscar(id_circuito) ?: return "errorCircuitos"
         model.addAttribute("circuito", circuito)
-        return "detalleCircuito"
+        return "circuitos/detalleCircuito"
     }
     // 3. FORMULARIO NUEVA PLANTA (pasa un objeto vacío con ID 0)
     @GetMapping("/circuitos/nueva")
@@ -29,7 +29,7 @@ class CircuitoController(private val circuitoService: CircuitoService) {
         val circuitoVacia = Circuito(0, "", "", 0, 0.0)
         model.addAttribute("circuito", circuitoVacia)
         model.addAttribute("titulo", "Nueva Circuito")
-        return "formCircuito"
+        return "circuitos/formCircuito"
     }
 
     // 4. FORMULARIO EDITAR PLANTA (pasa el objeto existente)
@@ -38,7 +38,7 @@ class CircuitoController(private val circuitoService: CircuitoService) {
         val circuito = circuitoService.buscar(id_circuito) ?: return "redirect:/circuitos"
         model.addAttribute("circuito", circuito)
         model.addAttribute("titulo", "Editar Circuito")
-        return "formCircuito"
+        return "circuitos/formCircuito"
     }
 
     // 5. PROCESAR GUARDADO (Sirve tanto para crear como para editar)
