@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Plantas (en memoria)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-success fw-bold">🌿 Catálogo de piezas en memoria</h1>
+        <a href="/piezas/nueva" class="btn btn-success">Añadir nueva pieza</a>
+    </div>
+
+    <div th:if="${piezas.size() > 0}" class="table-responsive">
+        <table class="table table-striped table-hover align-middle shadow-sm bg-white rounded">
+            <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pieza : ${piezas}">
+                <td th:text="${pieza.id_pieza}">1</td>
+                <td th:text="${pieza.nombre}">Rosa</td>
+                <td th:text="${pieza.fabricante}">Flor</td>
+                <td class="text-center">
+                    <a th:href="@{/pieza/{id}(id=${pieza.id_pieza})}" class="btn btn-info btn-sm">Detalles</a>
+                    <a th:href="@{/piezas/editar/{id}(id=${pieza.id_pieza})}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{/piezas/borrar/{id}(id=${pieza.id_pieza})}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Estás seguro de borrar esta pieza?')">Borrar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:unless="${piezas.size() > 0}" class="alert alert-warning text-center shadow-sm">
+        No se han encontrado piezas registradas en el sistema.
+    </div>
+
+    <div class="text-start mt-4">
+        <a href="/" class="btn btn-outline-secondary">Volver al inicio</a>
+    </div>
+</div>
+</body>
+</html>
