@@ -49,7 +49,7 @@ class CocheController(private val cocheService: CocheService) {
 
     // 6. PROCESAR BORRADO
     @GetMapping("/coches/borrar/{matricula}")
-    fun borrarPlanta(@PathVariable matricula: String): String {
+    fun borrarCoche(@PathVariable matricula: String): String {
         cocheService.borrar(matricula)
         return "redirect:/coches"
     }
