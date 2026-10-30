@@ -43,7 +43,7 @@
                     <span class="badge-tag" th:text="${circuito.pais}"></span>
                 </div>
                 <div class="coche-details">
-                    <div class="coche-matricula" th:text="${circuito.id_circuito}"></div>
+                    <div class="coche-matricula" th:text="'#' + ${circuito.id_circuito}"></div>
                     <div class="coche-marca" th:text="${circuito.nombre}"></div>
                     <div class="car-info">
                         <span th:text="'Curvas: ' + ${circuito.curvas} + ' |'"><i

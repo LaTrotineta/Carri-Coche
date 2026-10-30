@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tritoneta - Detalle del Vehículo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style/detalleCoche.css">
+</head>
+<body>
+
+<header class="header-nav">
+    <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
+    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
+</header>
+
+<main class="detail-card">
+<!--    <div class="status-badge">-->
+<!--        <i class="fas fa-car"></i> VEHÍCULO REGISTRADO-->
+<!--    </div>-->
+
+    <h2 class="detail-title">DETALLE DEL VEHÍCULO</h2>
+    <p class="detail-subtitle">Especificaciones técnicas registradas en el sistema de La Tritoneta.</p>
+
+    <!-- Campo 1: Matrícula -->
+    <div class="info-group" style="margin-bottom: 20px;">
+        <span class="info-label"><i class="fas fa-id-card"></i> Matrícula (val matricula: String)</span>
+        <div class="info-value">1234 ABC</div>
+    </div>
+
+    <!-- Fila 1: Marca y Modelo -->
+    <div class="info-row">
+        <div class="info-group">
+            <span class="info-label"><i class="fas fa-industry"></i> Marca (var marca: String)</span>
+            <div class="info-value">Audi</div>
+        </div>
+        <div class="info-group">
+            <span class="info-label"><i class="fas fa-car-side"></i> Modelo (var modelo: String)</span>
+            <div class="info-value">R8 V10 Performance</div>
+        </div>
+    </div>
+
+    <!-- Fila 2: Potencia y Consumo -->
+    <div class="info-row">
+        <div class="info-group">
+            <span class="info-label"><i class="fas fa-bolt"></i> Potencia (var potencia: Int)</span>
+            <div class="info-value">620 CV</div>
+        </div>
+        <div class="info-group">
+            <span class="info-label"><i class="fas fa-gas-pump"></i> Consumo (var consumo: Double)</span>
+            <div class="info-value">12.5 L/100 km</div>
+        </div>
+    </div>
+
+    <!-- Botones de Acción -->
+    <div class="card-actions">
+        <a href="/" class="btn btn-outline"><i class="fas fa-home"></i> INICIO</a>
+        <a href="editar.html" class="btn btn-red"><i class="fas fa-pen"></i> EDITAR VEHÍCULO</a>
+    </div>
+</main>
+
+</body>
+</html>
