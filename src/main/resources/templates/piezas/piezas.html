@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>La Tritoneta - Catálogo de Vehículos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/style/stylepiezas.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="header-nav">
+    <div class="logo">LA <span>TRITONETA</span></div>
+    <a href="/" style="color: #9ca3af; text-decoration: none; font-size: 0.85rem;"><i class="fas fa-home"></i>
+        Inicio</a>
+</div>
+
+<div class="layout">
+    <aside class="filter-box">
+        <div class="filter-title"><i class="fas fa-filter"></i> Filtros</div>
+        <div class="filter-group">
+            <label>Marca</label>
+            <select>
+                <option>Todas</option>
+                <option>Audi</option>
+                <option>BMW</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Tipo</label>
+            <select>
+                <option>Nuevos</option>
+                <option>Alquiler</option>
+            </select>
+        </div>
+    </aside>
+
+    <main class="grid-container">
+        <div th:each="pieza : ${piezas}">
+            <div class="coche-card">
+                <div class="coche-img">
+                    <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
+                    <img alt="imagenCircuito" src="">
+                    <span class="badge-tag" th:text="${pieza.fabricante}"></span>
+                </div>
+                <div class="coche-details">
+                    <div class="coche-matricula" th:text="'#' + ${pieza.id_pieza}"></div>
+                    <div class="coche-marca" th:text="${pieza.nombre}"></div>
+                    <div class="car-info">
+                        <span th:text="'Stock: ' + ${pieza.stock} + ' |'"><i
+                                class="fas fa-tachometer-alt"></i> </span>
+                        <span th:text="'Precio: ' + ${pieza.precio}"><i class="fas fa-cog"></i> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
