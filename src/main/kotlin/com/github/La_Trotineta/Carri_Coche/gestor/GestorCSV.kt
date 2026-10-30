@@ -1,6 +1,8 @@
 package com.github.junfeng52.servicio
 
+import com.github.La_Trotineta.Carri_Coche.model.Circuito
 import com.github.La_Trotineta.Carri_Coche.model.Coche
+import com.github.La_Trotineta.Carri_Coche.model.Mecanico
 import com.github.La_Trotineta.Carri_Coche.model.Pieza
 import com.github.La_Trotineta.Carri_Coche.util.Utils
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
@@ -32,7 +34,6 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                                 null
                             }
                         } else {
-                            println("Columna invalida: $columnas")
                             null
                         }
                     }
@@ -52,7 +53,44 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                                 null
                             }
                         } else {
-                            println("Columna invalida: $columnas")
+                            null
+                        }
+                    }
+                }
+
+                Circuito::class -> {
+                    filas.mapNotNull { columnas ->
+                        if (columnas.size >= 5) {
+                            try {
+                                val id_circuito = columnas[0].toInt()
+                                val nombre = columnas[1]
+                                val pais = columnas[2]
+                                val curvas = columnas[3].toInt()
+                                val longitud = columnas[4].toDouble()
+                                Circuito(id_circuito, nombre, pais, curvas, longitud)
+                            } catch (ex: Exception) {
+                                null
+                            }
+                        } else {
+                            null
+                        }
+                    }
+                }
+
+                Mecanico::class -> {
+                    filas.mapNotNull { columnas ->
+                        if (columnas.size >= 5) {
+                            try {
+                                val id_mecanico = columnas[0].toInt()
+                                val nombre = columnas[1]
+                                val especialidad = columnas[2]
+                                val experiencia = columnas[3].toInt()
+                                val tarifaHora = columnas[4].toDouble()
+                                Mecanico(id_mecanico, nombre, especialidad, experiencia, tarifaHora)
+                            } catch (ex: Exception) {
+                                null
+                            }
+                        } else {
                             null
                         }
                     }
@@ -98,9 +136,34 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                 }
             }
 
+            Circuito::class -> {
+                val listaPiezas = valores as List<Circuito>
+                listaPiezas.map { coche ->
+                    listOf(
+                        coche.id_circuito,
+                        coche.nombre,
+                        coche.pais,
+                        coche.curvas,
+                        coche.longitud
+                    )
+                }
+            }
+
+            Mecanico::class -> {
+                val listaPiezas = valores as List<Mecanico>
+                listaPiezas.map { coche ->
+                    listOf(
+                        coche.id_mecanico,
+                        coche.nombre,
+                        coche.especialidad,
+                        coche.experiencia,
+                        coche.tarifaHora
+                    )
+                }
+            }
+
             else -> emptyList()
         }
-
 
         csvWriter {
             delimiter = delimiterCSV
