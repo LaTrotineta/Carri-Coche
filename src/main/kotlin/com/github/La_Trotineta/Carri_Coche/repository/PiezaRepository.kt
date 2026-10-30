@@ -1,11 +1,20 @@
 package com.github.La_Trotineta.Carri_Coche.repository
 
 import com.github.La_Trotineta.Carri_Coche.model.Pieza
+import com.github.junfeng52.servicio.GestorCSV
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.core.io.Resource
 import org.springframework.stereotype.Repository
+import java.nio.file.Path
 
 @Repository
-class PiezaRepository {
-    private val piezas = mutableListOf<Pieza>()
+class PiezaRepository(
+    @Value("classpath:data/piezas.csv")
+    private val archivo: Resource
+) {
+    private val gestor: GestorCSV = GestorCSV(Path.of(archivo.uri))
+    private val piezas: MutableList<Pieza> = gestor.leerCSV<Pieza>() as MutableList<Pieza>
+
     fun leerTodasLasPiezas() : List<Pieza> = piezas;
     fun buscarPorID (id : Int) : Pieza? = piezas.find { it.id_pieza == id }
     fun guardarPieza(pieza : Pieza) {
