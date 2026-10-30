@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del mecanico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5" style="max-width: 500px;">
+    <div class="card shadow-sm border-0 text-center">
+
+<!--        <img th:src="@{/fotos/{nombreImagen}(nombreImagen=${planta.foto})}"-->
+<!--             alt="Foto"-->
+<!--             class="img-fluid rounded mb-4"-->
+<!--             style="max-height: 250px;">-->
+
+        <div class="card-body p-4">
+            <h1 class="text-success fw-bold mb-3" th:text="${mecanico.nombre}">Nombre</h1>
+            <p class="text-muted fs-5">
+                <strong>Tipo:</strong> <span th:text="${mecanico.especialidad}">Mecanica</span> <br>
+                <strong>Altura:</strong> <span th:text="${mecanico.experiencia}">1</span>
+                <strong>Altura:</strong> <span th:text="${mecanico.tarifaHora}">1.2</span>
+            </p>
+            <hr>
+            <div class="d-flex justify-content-around mt-4">
+                <a href="/plantas" class="btn btn-outline-secondary">Volver al listado</a>
+                <a th:href="@{/mecanicos/editar/{id}(id=${mecanico.id_mecanico})}" class="btn btn-warning">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
