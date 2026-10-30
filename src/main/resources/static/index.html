@@ -1,57 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Encuentra tu próximo coche con AutoDrive. Vehículos, alquiler y coches de ocasión.">
-    <title>AutoDrive | Concesionario de coches</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>La Tritoneta - Concesionarios y Automoción</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0b0e14;
+      color: #ffffff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Hero Section centrada */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      min-height: 100vh;
+      position: relative;
+      background: radial-gradient(circle at bottom center, rgba(230, 0, 35, 0.15), transparent 50%);
+    }
+
+    /* Título y Subtítulo en el centro superior */
+    .hero-header {
+      text-align: center;
+      max-width: 850px;
+      margin-bottom: 50px;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-title span.red-text {
+      color: #ff1d35;
+    }
+
+    .hero-desc {
+      color: #9ca3af;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Contenedor de las 4 Tarjetas en Diagonal */
+    .cards-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      gap: 15px;
+      height: 420px;
+      z-index: 2;
+    }
+
+    .skew-card {
+      flex: 1;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      transform: skewX(-10deg);
+      transition: transform 0.3s, flex 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .skew-card:hover {
+      flex: 1.3;
+      transform: skewX(-10deg) scale(1.02);
+    }
+
+    /* Degradados de color para cada tarjeta */
+    .overlay-blue {
+      background: linear-gradient(180deg, rgba(30, 86, 255, 0.7) 0%, rgba(11, 14, 20, 0.9) 100%);
+    }
+
+    .overlay-red {
+      background: linear-gradient(180deg, rgba(255, 29, 53, 0.75) 0%, rgba(11, 14, 20, 0.9) 100%);
+    }
+
+    .overlay-dark {
+      background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(11, 14, 20, 0.9) 100%);
+    }
+
+    .overlay-cyan {
+      background: linear-gradient(180deg, rgba(0, 180, 216, 0.7) 0%, rgba(11, 14, 20, 0.9) 100%);
+    }
+
+    .card-title {
+      position: absolute;
+      bottom: 25px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0 10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+  </style>
 </head>
 <body>
-<main class="hero">
-    <section class="intro" aria-labelledby="main-title">
-        <h1 id="main-title"><span>La Trotineta</span></h1>
-<!--        <p class="description">-->
-<!--            <b>-->
-<!--                Integrantes del equipo:-->
-<!--            </b>-->
-<!--        </p>-->
-<!--        <ul>-->
-<!--            <li>Santiago</li>-->
-<!--            <li>Alexander</li>-->
-<!--            <li>Antonio</li>-->
-<!--            <li>Junfeng</li>-->
-<!--        </ul>-->
-    </section>
-    <div class="hero-inner">
 
-        <section class="showcase" id="servicios" aria-label="Servicios del concesionario">
-            <div class="feature-wrap">
-                <div class="feature">
-                    <img src="" alt="Interior de un coche moderno">
-                </div>
-                <div class="feature-label">SERVICIO DE ALQUILER</div>
-            </div>
-            <div class="feature-wrap">
-                <div class="feature">
-                    <img src="https://cdn-images.motor.es/image/m/1320w/fotos-noticias/2022/01/seat-ibiza-2022-202284226-1642265072_1.jpg" alt="Coche deportivo en exposición">
-                </div>
-                <div class="feature-label">CONCESIONARIOS</div>
-            </div>
-            <div class="feature-wrap" onclick="window.location.href='/mecanicos'">
-                <div class="feature">
-                    <img src="" alt="Coches disponibles para clasificados">
-                </div>
-                <div class="feature-label">ANUNCIOS CLASIFICADOS</div>
-            </div>
-            <div class="feature-wrap">
-                <div class="feature">
-                    <img src="" alt="Coches disponibles para clasificados">
-                </div>
-                <div class="feature-label">ANUNCIOS CLASIFICADOS</div>
-            </div>
-        </section>
+<section class="hero">
+  <!-- Título centrado en la parte superior -->
+  <div class="hero-header">
+    <h1 class="hero-title">LA <span class="red-text">TRITONETA</span></h1>
+    <p class="hero-desc">
+      Para Concesionarios de Autos, Anuncios Clasificados, Alquiler de Vehículos, Talleres y Venta de
+      Motocicletas.</p>
+  </div>
+
+  <!-- 4 Selecciones en diagonal -->
+  <div class="cards-container" onclick="window.location.href='/circuitos'">
+    <div class="skew-card overlay-blue">
+      <img src="img/circuito.jpeg"></img>
+      <div class="card-title">CIRCUITO</div>
     </div>
-</main>
+    <div class="skew-card overlay-red">
+      <div class="card-title">CONCESIONARIO OFICIAL</div>
+    </div>
+    <div class="skew-card overlay-dark">
+      <div class="card-title">ANUNCIOS CLASIFICADOS</div>
+    </div>
+    <div class="skew-card overlay-cyan">
+      <div class="card-title">TALLER Y MANTENIMIENTO</div>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
