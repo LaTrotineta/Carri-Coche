@@ -1,77 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>La Tritoneta - Publicar Vehículo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tritoneta - Detalle del Vehículo</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #0b0e14; color: #fff; padding: 50px 20px; display: flex; justify-content: center; }
-
-        .form-container {
-            background: #121722; width: 100%; max-width: 600px; padding: 40px; border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-        .form-header { margin-bottom: 30px; }
-        .form-header h2 { font-size: 1.5rem; text-transform: uppercase; font-weight: 800; }
-        .form-header h2 span { color: #ff1d35; }
-        .form-header p { color: #9ca3af; font-size: 0.85rem; margin-top: 5px; }
-
-        .form-row { display: flex; gap: 15px; margin-bottom: 20px; }
-        .form-group { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-
-        label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: #9ca3af; }
-        input, select, textarea {
-            background: #0b0e14; border: 1px solid #2a3241; border-radius: 6px; padding: 12px;
-            color: #fff; font-size: 0.9rem; outline: none; transition: 0.3s;
-        }
-        input:focus, select:focus, textarea:focus { border-color: #1e56ff; box-shadow: 0 0 8px rgba(30, 86, 255, 0.4); }
-
-        .btn-submit {
-            width: 100%; background: #1e56ff; color: #fff; font-weight: bold; border: none; padding: 14px;
-            border-radius: 6px; text-transform: uppercase; cursor: pointer; transition: 0.3s; font-size: 0.85rem;
-            margin-top: 10px;
-        }
-        .btn-submit:hover { background: #003cd6; }
-    </style>
+    <link rel="stylesheet" href="/style/detalleCoche.css">
 </head>
 <body>
 
-<div class="form-container">
-    <div class="form-header">
-        <h2>PUBLICAR EN <span>LA TRITONETA</span></h2>
-        <p>Introduce los datos de tu vehículo para agregarlo al catálogo.</p>
+<header class="header-nav">
+    <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
+    <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
+</header>
+<form class="detail-card" th:action="@{/coche/guardar}" th:object="${coche}" method="post">
+    <h2 class="detail-title">EDICION DEL COCHE</h2>
+    <p class="detail-subtitle">Especificaciones técnicas registradas en el sistema de La Tritoneta.</p>
+
+    <div class="info-group" style="margin-bottom: 20px;">
+        <label for="matricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
+        <input type="text" id="matricula"th:field="*{matricula}" class="info-value" required />
     </div>
 
-    <form>
-        <div class="form-group" style="margin-bottom: 20px;">
-            <label>Título del Anuncio</label>
-            <input type="text" placeholder="Ej. Audi R8 2023 V10 Performance" required>
+    <div class="info-row">
+        <div class="info-group">
+            <label for="marca" class="info-label"><i class="fas fa-industry"></i> Marca</label>
+            <input type="text" id="marca" th:field="*{marca}" class="info-value" required />
         </div>
-
-        <div class="form-row">
-            <div class="form-group">
-                <label>Categoría</label>
-                <select>
-                    <option>Concesionario</option>
-                    <option>Alquiler</option>
-                    <option>Clasificados</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Precio ($)</label>
-                <input type="number" placeholder="25000" required>
-            </div>
+        <div class="info-group">
+            <label for="modelo" class="info-label"><i class="fas fa-car-side"></i> Modelo</label>
+            <input type="text" id="modelo" th:field="*{modelo}" class="info-value" required />
         </div>
+    </div>
 
-        <div class="form-group" style="margin-bottom: 20px;">
-            <label>Descripción del Vehículo</label>
-            <textarea rows="4" placeholder="Detalles, equipamiento y estado del coche..."></textarea>
+    <div class="info-row">
+        <div class="info-group">
+            <label for="potencia" class="info-label"><i class="fas fa-bolt"></i> Potencia</label>
+            <input type="number" step="any" id="potencia" th:field="*{potencia}" class="info-value" required />
         </div>
+        <div class="info-group">
+            <label for="consumo" class="info-label"><i class="fas fa-gas-pump"></i> Consumo</label>
+            <input type="number" step="any" id="consumo" th:field="*{consumo}" class="info-value" required />
+        </div>
+    </div>
 
-        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> ENVIAR ANUNCIO</button>
-    </form>
-</div>
-
+    <div class="card-actions">
+        <a th:href="'/coche/' + ${coche.matricula}" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Volver</a>
+        <button type="submit" class="btn btn-red"><i class="fas fa-save"></i> Guardar</button>
+    </div>
+</form>
 </body>
 </html>

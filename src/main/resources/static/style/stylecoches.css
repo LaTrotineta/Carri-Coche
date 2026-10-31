@@ -5,6 +5,11 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 body {
     background-color: #0b0e14;
     color: #fff;
@@ -47,7 +52,7 @@ body {
     margin-bottom: 15px;
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: #ff1d35;
+    color: #00B894;
 }
 
 .filter-group {
@@ -86,7 +91,7 @@ body {
 }
 
 .coche-card:hover {
-    border-color: #ff1d35;
+    border-color: #00B894;
     transform: translateY(-5px);
 }
 
@@ -103,7 +108,7 @@ body {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #ff1d35;
+    background: #00B894;
     font-size: 0.65rem;
     font-weight: bold;
     padding: 3px 8px;
@@ -121,7 +126,7 @@ body {
 }
 
 .coche-marca {
-    color: #ff1d35;
+    color: #00B894;
     font-weight: 800;
     font-size: 1.1rem;
     margin-bottom: 12px;
