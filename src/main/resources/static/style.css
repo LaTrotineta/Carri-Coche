@@ -96,12 +96,12 @@ body {
     background: linear-gradient(180deg, rgba(255, 29, 53, 0.75) 0%, rgba(11, 14, 20, 0.9) 100%);
 }
 
-.overlay-dark {
-    background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(11, 14, 20, 0.9) 100%);
+.overlay-green {
+    background: linear-gradient(180deg, rgba(0, 184, 148, 0.6) 0%, rgba(11, 14, 20, 0.9) 100%);
 }
 
-.overlay-cyan {
-    background: linear-gradient(180deg, rgba(0, 180, 216, 0.7) 0%, rgba(11, 14, 20, 0.9) 100%);
+.overlay-yellow {
+    background: linear-gradient(180deg, rgba(243, 156, 18, 0.7) 0%, rgba(11, 14, 20, 0.9) 100%);
 }
 
 .card-title {

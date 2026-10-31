@@ -36,15 +36,15 @@
 
     <main class="grid-container">
         <div th:each="pieza : ${piezas}">
-            <div class="coche-card">
-                <div class="coche-img">
+            <div class="pieza-card">
+                <div class="pieza-img">
                     <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
                     <img alt="imagenCircuito" src="">
                     <span class="badge-tag" th:text="${pieza.fabricante}"></span>
                 </div>
-                <div class="coche-details">
-                    <div class="coche-matricula" th:text="'#' + ${pieza.id_pieza}"></div>
-                    <div class="coche-marca" th:text="${pieza.nombre}"></div>
+                <div class="pieza-details">
+                    <div class="pieza-matricula" th:text="'#' + ${pieza.id_pieza}"></div>
+                    <div class="pieza-marca" th:text="${pieza.nombre}"></div>
                     <div class="car-info">
                         <span th:text="'Stock: ' + ${pieza.stock} + ' |'"><i
                                 class="fas fa-tachometer-alt"></i> </span>

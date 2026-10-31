@@ -35,7 +35,7 @@
     </aside>
 
     <main class="grid-container">
-        <div th:each="coche : ${coches}">
+        <a th:each="coche : ${coches}" th:href="'/coche/' + ${coche.matricula}">
             <div class="coche-card">
                 <div class="coche-img">
                     <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->

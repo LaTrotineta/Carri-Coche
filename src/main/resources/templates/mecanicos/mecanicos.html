@@ -1,53 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Catálogo de Mecanicos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>La Tritoneta - Catálogo de Vehículos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/style/stylemecanicos.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-<div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="text-success fw-bold">👨‍🔧 Catálogo de Mecanicos</h1>
-        <a href="/mecanicos/nuevo" class="btn btn-success">Añadir un nuevo mecanico</a>
-    </div>
+<body>
 
-    <div th:if="${mecanicos.size() > 0}" class="table-responsive">
-        <table class="table table-striped table-hover align-middle shadow-sm bg-white rounded">
-            <thead class="table-success">
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Especialidad</th>
-                <th>Experiencia</th>
-                <th>Tarifa Hora</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="mecanico : ${mecanicos}">
-                <td th:text="${mecanico.id_mecanico}">1</td>
-                <td th:text="${mecanico.nombre}">Mecanico</td>
-                <td th:text="${mecanico.especialidad}">Mecanica</td>
-                <td th:text="${mecanico.experiencia}">Experiencia</td>
-                <td th:text="${mecanico.tarifaHora}">Tarifa</td>
-                <td class="text-center">
-                    <a th:href="@{/mecanico/{id}(id=${mecanico.id_mecanico})}" class="btn btn-info btn-sm">Detalles</a>
-                    <a th:href="@{/mecanicos/editar/{id}(id=${mecanico.id_mecanico})}" class="btn btn-warning btn-sm">Editar</a>
-                    <a th:href="@{/mecanicos/borrar/{id}(id=${mecanico.id_mecanico})}" class="btn btn-danger btn-sm"
-                       onclick="return confirm('¿Estás seguro de borrar este mecanico?')">Borrar</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div th:unless="${mecanicos.size() > 0}" class="alert alert-warning text-center shadow-sm">
-        No se han encontrado mecanicos registrados en el sistema.
-    </div>
-
-    <div class="text-start mt-4">
-        <a href="/" class="btn btn-outline-secondary">Volver al inicio</a>
-    </div>
+<div class="header-nav">
+    <div class="logo">LA <span>TRITONETA</span></div>
+    <a href="/" style="color: #9ca3af; text-decoration: none; font-size: 0.85rem;"><i class="fas fa-home"></i>
+        Inicio</a>
 </div>
+
+<div class="layout">
+    <aside class="filter-box">
+        <div class="filter-title"><i class="fas fa-filter"></i> Filtros</div>
+        <div class="filter-group">
+            <label>Marca</label>
+            <select>
+                <option>Todas</option>
+                <option>Audi</option>
+                <option>BMW</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Tipo</label>
+            <select>
+                <option>Nuevos</option>
+                <option>Alquiler</option>
+            </select>
+        </div>
+    </aside>
+
+    <main class="grid-container">
+        <div th:each="mecanico : ${mecanicos}">
+            <div class="mecanico-card">
+                <div class="mecanico-img">
+                    <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
+                    <img alt="imagenCircuito" src="">
+                    <span class="badge-tag" th:text="${mecanico.especialidad}"></span>
+                </div>
+                <div class="mecanico-details">
+                    <div class="mecanico-matricula" th:text="'#' + ${mecanico.id_mecanico}"></div>
+                    <div class="mecanico-marca" th:text="${mecanico.nombre}"></div>
+                    <div class="car-info">
+                        <span th:text="'Experiencia: ' + ${mecanico.experiencia} + ' |'"><i
+                                class="fas fa-tachometer-alt"></i> </span>
+                        <span th:text="'Tarifa: ' + ${mecanico.tarifaHora} + '€/H'"><i class="fas fa-cog"></i> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
 </body>
 </html>

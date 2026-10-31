@@ -11,6 +11,8 @@ body {
     padding: 40px;
 }
 
+
+
 .header-nav {
     display: flex;
     justify-content: space-between;
@@ -77,7 +79,7 @@ body {
     gap: 20px;
 }
 
-.coche-card {
+.circuitos-card {
     background: #121722;
     border-radius: 8px;
     overflow: hidden;
@@ -85,12 +87,12 @@ body {
     transition: 0.3s;
 }
 
-.coche-card:hover {
+.circuitos-card:hover {
     border-color: #1E56FF;
     transform: translateY(-5px);
 }
 
-.coche-img {
+.circuitos-img {
     height: 160px;
     background: #1f2937;
     position: relative;
@@ -110,24 +112,24 @@ body {
     border-radius: 3px;
 }
 
-.coche-details {
+.circuitos-details {
     padding: 15px;
 }
 
-.coche-matricula {
+.circuitos-matricula {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 8px;
 }
 
-.coche-marca {
+.circuitos-marca {
     color: #1E56FF;
     font-weight: 800;
     font-size: 1.1rem;
     margin-bottom: 12px;
 }
 
-.coche-info {
+.circuitos-info {
     font-size: 0.75rem;
     color: #9ca3af;
     display: flex;
