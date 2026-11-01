@@ -15,44 +15,48 @@
 </div>
 
 <div class="layout">
-    <aside class="filter-box">
-        <div class="filter-title"><i class="fas fa-filter"></i> Filtros</div>
+    <form class="filter-box" method="get">
+        <div class="filter-title">
+            <i class="fas fa-filter"> </i> Filtros
+        </div>
         <div class="filter-group">
             <label>Marca</label>
-            <select>
-                <option>Todas</option>
-                <option>Audi</option>
-                <option>BMW</option>
+            <select name="marca" onchange="this.form.submit()">
+                <option value="" th:selected="${marca == null && marca == ''}">Todos</option>
+                <option th:each="coche : ${listaCoche}" th:value="${coche.marca}" th:text="${coche.marca}" th:selected="${marca != null && marca == coche.marca}"></option>
             </select>
         </div>
-        <div class="filter-group">
-            <label>Tipo</label>
-            <select>
-                <option>Nuevos</option>
-                <option>Alquiler</option>
-            </select>
-        </div>
-    </aside>
+    </form>
 
     <main class="grid-container">
-        <a th:each="coche : ${coches}" th:href="'/coche/' + ${coche.matricula}">
-            <div class="coche-card">
-                <div class="coche-img">
-                    <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                    <img alt="imagenCoche" src="">
-                    <span class="badge-tag" th:text="${coche.marca}"></span>
-                </div>
-                <div class="coche-details">
-                    <div class="coche-matricula" th:text="${coche.modelo}"></div>
-                    <div class="coche-marca" th:text="${coche.matricula}"></div>
-                    <div class="car-info">
-                        <span th:text="'Potencia: ' + ${coche.potencia} + ' |'"><i
-                                class="fas fa-tachometer-alt"></i> </span>
-                        <span th:text="'Consumo: ' + ${coche.consumo}"><i class="fas fa-cog"></i> </span>
-                    </div>
+
+        <a th:href="@{/coche/nuevo}">
+            <div class="coche-card add-card"
+                 style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; min-height: 250px;">
+                <div class="coche-new"
+                     style="display: flex; align-items: center; justify-content: center; height: 120px;">
+                    <i class="fas fa-plus fa-3x" style="color: #ff1d35;"></i>
                 </div>
             </div>
-        </div>
+        </a>
+
+
+        <a class="coche-card" th:each="coche : ${coches}" th:href="'/coche/' + ${coche.matricula}">
+            <div class="coche-img">
+                <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
+                <img alt="imagenCoche" src="">
+                <span class="badge-tag" th:text="${coche.marca}"></span>
+            </div>
+            <div class="coche-details">
+                <div class="coche-matricula" th:text="${coche.modelo}"></div>
+                <div class="coche-marca" th:text="${coche.matricula}"></div>
+                <div class="car-info">
+                    <span th:text="'Potencia: ' + ${coche.potencia} + ' |'"><i
+                            class="fas fa-tachometer-alt"></i> </span>
+                    <span th:text="'Consumo: ' + ${coche.consumo}"><i class="fas fa-cog"></i> </span>
+                </div>
+            </div>
+        </a>
     </main>
 </div>
 

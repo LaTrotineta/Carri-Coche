@@ -14,12 +14,18 @@
     <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
 </header>
 <form class="detail-card" th:action="@{/coche/guardar}" th:object="${coche}" method="post">
-    <h2 class="detail-title">EDICION DEL COCHE</h2>
-    <p class="detail-subtitle">Especificaciones técnicas registradas en el sistema de La Tritoneta.</p>
+    <h2 class="detail-title" th:text="${titulo}"></h2>
+    <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
     <div class="info-group" style="margin-bottom: 20px;">
-        <label for="matricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
-        <input type="text" id="matricula"th:field="*{matricula}" class="info-value" required />
+        <th:block th:if="${titulo == 'Nueva Coche'}">
+            <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
+            <input  type="text" id="nuevaMatricula"th:field="*{matricula}" class="info-value" required />
+        </th:block>
+        <th:block th:unless="${titulo == 'Nueva Coche'}">
+            <label for="matricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
+            <input th:unless="${titulo == 'Nueva Coche'}" type="text" id="matricula"th:field="*{matricula}" class="info-value" readonly />
+        </th:block>
     </div>
 
     <div class="info-row">
@@ -45,7 +51,8 @@
     </div>
 
     <div class="card-actions">
-        <a th:href="'/coche/' + ${coche.matricula}" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" href="/coches" th:if="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" th:href="'/coche/' + ${coche.matricula}" th:unless="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
         <button type="submit" class="btn btn-red"><i class="fas fa-save"></i> Guardar</button>
     </div>
 </form>

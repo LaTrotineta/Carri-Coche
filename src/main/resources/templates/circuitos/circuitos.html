@@ -15,44 +15,36 @@
 </div>
 
 <div class="layout">
-    <aside class="filter-box">
-        <div class="filter-title"><i class="fas fa-filter"></i> Filtros</div>
+    <form class="filter-box" method="get">
+        <div class="filter-title">
+            <i class="fas fa-filter"> </i> Filtros
+        </div>
         <div class="filter-group">
             <label>Marca</label>
-            <select>
-                <option>Todas</option>
-                <option>Audi</option>
-                <option>BMW</option>
+            <select name="marca" onchange="this.form.submit()">
+                <option value="" th:selected="${marca == null && marca == ''}">Todos</option>
+                <option th:each="coche : ${listaCoche}" th:value="${coche.marca}" th:text="${coche.marca}" th:selected="${marca != null && marca == coche.marca}"></option>
             </select>
         </div>
-        <div class="filter-group">
-            <label>Tipo</label>
-            <select>
-                <option>Nuevos</option>
-                <option>Alquiler</option>
-            </select>
-        </div>
-    </aside>
+    </form>
 
     <main class="grid-container">
-        <div th:each="circuito : ${circuitos}">
-            <div class="circuitos-card">
-                <div class="circuitos-img">
-                    <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                    <img alt="imagenCircuito" src="">
-                    <span class="badge-tag" th:text="${circuito.pais}"></span>
-                </div>
-                <div class="circuitos-details">
-                    <div class="circuitos-matricula" th:text="'#' + ${circuito.id_circuito}"></div>
-                    <div class="circuitos-marca" th:text="${circuito.nombre}"></div>
-                    <div class="car-info">
-                        <span th:text="'Curvas: ' + ${circuito.curvas} + ' |'"><i
-                                class="fas fa-tachometer-alt"></i> </span>
-                        <span th:text="'Longitud: ' + ${circuito.longitud}"><i class="fas fa-cog"></i> </span>
-                    </div>
+        <a class="circuitos-card" th:each="circuito : ${circuitos}">
+            <div class="circuitos-img">
+                <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
+                <img alt="imagenCircuito" src="">
+                <span class="badge-tag" th:text="${circuito.pais}"></span>
+            </div>
+            <div class="circuitos-details">
+                <div class="circuitos-matricula" th:text="'#' + ${circuito.id_circuito}"></div>
+                <div class="circuitos-marca" th:text="${circuito.nombre}"></div>
+                <div class="car-info">
+                    <span th:text="'Curvas: ' + ${circuito.curvas} + ' |'"><i
+                            class="fas fa-tachometer-alt"></i> </span>
+                    <span th:text="'Longitud: ' + ${circuito.longitud}"><i class="fas fa-cog"></i> </span>
                 </div>
             </div>
-        </div>
+        </a>
     </main>
 </div>
 

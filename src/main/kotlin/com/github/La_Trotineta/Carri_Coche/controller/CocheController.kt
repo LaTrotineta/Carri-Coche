@@ -8,12 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
 class CocheController(private val cocheService: CocheService) {
     @GetMapping("/coches")
-    fun listarCoches(model: Model): String {
-        model.addAttribute("coches", cocheService.listar())
+    fun listarCoches(@RequestParam(name = "marca", required = false) marca: String? , model: Model): String {
+        val listaCoche = cocheService.listar()
+        val valores = when {
+            marca != null && marca != "" -> listaCoche.filter { it.marca == marca }
+            else -> listaCoche
+        }
+        model.addAttribute("listaCoche", listaCoche)
+        model.addAttribute("coches", valores)
+        model.addAttribute("marca", marca)
         return "coches/coches"
     }
 
@@ -24,11 +32,12 @@ class CocheController(private val cocheService: CocheService) {
         return "coches/detalleCoche"
     }
 
-    @GetMapping("/coches/nuevo")
+    @GetMapping("/coche/nuevo")
     fun nueva(model: Model): String {
         val cocheVacio = Coche("", "", "", 0, 0.0)
         model.addAttribute("coche", cocheVacio)
         model.addAttribute("titulo", "Nueva Coche")
+
         return "coches/formCoche"
     }
 

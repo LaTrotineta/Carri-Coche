@@ -15,44 +15,37 @@
 </div>
 
 <div class="layout">
-    <aside class="filter-box">
-        <div class="filter-title"><i class="fas fa-filter"></i> Filtros</div>
+    <form class="filter-box" method="get">
+        <div class="filter-title">
+            <i class="fas fa-filter"> </i> Filtros
+        </div>
         <div class="filter-group">
             <label>Marca</label>
-            <select>
-                <option>Todas</option>
-                <option>Audi</option>
-                <option>BMW</option>
+            <select name="marca" onchange="this.form.submit()">
+                <option th:selected="${marca == null && marca == ''}" value="">Todos</option>
+                <option th:each="coche : ${listaCoche}" th:selected="${marca != null && marca == coche.marca}" th:text="${coche.marca}"
+                        th:value="${coche.marca}"></option>
             </select>
         </div>
-        <div class="filter-group">
-            <label>Tipo</label>
-            <select>
-                <option>Nuevos</option>
-                <option>Alquiler</option>
-            </select>
-        </div>
-    </aside>
+    </form>
 
     <main class="grid-container">
-        <div th:each="mecanico : ${mecanicos}">
-            <div class="mecanico-card">
-                <div class="mecanico-img">
-                    <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                    <img alt="imagenCircuito" src="">
-                    <span class="badge-tag" th:text="${mecanico.especialidad}"></span>
-                </div>
-                <div class="mecanico-details">
-                    <div class="mecanico-matricula" th:text="'#' + ${mecanico.id_mecanico}"></div>
-                    <div class="mecanico-marca" th:text="${mecanico.nombre}"></div>
-                    <div class="car-info">
-                        <span th:text="'Experiencia: ' + ${mecanico.experiencia} + ' |'"><i
-                                class="fas fa-tachometer-alt"></i> </span>
-                        <span th:text="'Tarifa: ' + ${mecanico.tarifaHora} + '€/H'"><i class="fas fa-cog"></i> </span>
-                    </div>
+        <a class="mecanico-card" th:each="mecanico : ${mecanicos}">
+            <div class="mecanico-img">
+                <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
+                <img alt="imagenCircuito" src="">
+                <span class="badge-tag" th:text="${mecanico.especialidad}"></span>
+            </div>
+            <div class="mecanico-details">
+                <div class="mecanico-matricula" th:text="'#' + ${mecanico.id_mecanico}"></div>
+                <div class="mecanico-marca" th:text="${mecanico.nombre}"></div>
+                <div class="car-info">
+                    <span th:text="'Experiencia: ' + ${mecanico.experiencia} + ' |'"><i
+                            class="fas fa-tachometer-alt"></i> </span>
+                    <span th:text="'Tarifa: ' + ${mecanico.tarifaHora} + '€/H'"><i class="fas fa-cog"></i> </span>
                 </div>
             </div>
-        </div>
+        </a>
     </main>
 </div>
 

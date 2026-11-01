@@ -95,6 +95,13 @@ body {
     transform: translateY(-5px);
 }
 
+.coche-new {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .coche-img {
     height: 160px;
     background: #1f2937;

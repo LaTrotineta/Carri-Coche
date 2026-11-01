@@ -15,44 +15,36 @@
 </div>
 
 <div class="layout">
-    <aside class="filter-box">
-        <div class="filter-title"><i class="fas fa-filter"></i> Filtros</div>
+    <form class="filter-box" method="get">
+        <div class="filter-title">
+            <i class="fas fa-filter"> </i> Filtros
+        </div>
         <div class="filter-group">
             <label>Marca</label>
-            <select>
-                <option>Todas</option>
-                <option>Audi</option>
-                <option>BMW</option>
+            <select name="marca" onchange="this.form.submit()">
+                <option value="" th:selected="${marca == null && marca == ''}">Todos</option>
+                <option th:each="coche : ${listaCoche}" th:value="${coche.marca}" th:text="${coche.marca}" th:selected="${marca != null && marca == coche.marca}"></option>
             </select>
         </div>
-        <div class="filter-group">
-            <label>Tipo</label>
-            <select>
-                <option>Nuevos</option>
-                <option>Alquiler</option>
-            </select>
-        </div>
-    </aside>
+    </form>
 
     <main class="grid-container">
-        <div th:each="pieza : ${piezas}">
-            <div class="pieza-card">
-                <div class="pieza-img">
-                    <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                    <img alt="imagenCircuito" src="">
-                    <span class="badge-tag" th:text="${pieza.fabricante}"></span>
-                </div>
-                <div class="pieza-details">
-                    <div class="pieza-matricula" th:text="'#' + ${pieza.id_pieza}"></div>
-                    <div class="pieza-marca" th:text="${pieza.nombre}"></div>
-                    <div class="car-info">
-                        <span th:text="'Stock: ' + ${pieza.stock} + ' |'"><i
-                                class="fas fa-tachometer-alt"></i> </span>
-                        <span th:text="'Precio: ' + ${pieza.precio}"><i class="fas fa-cog"></i> </span>
-                    </div>
+        <a class="pieza-card" th:each="pieza : ${piezas}">
+            <div class="pieza-img">
+                <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
+                <img alt="imagenCircuito" src="">
+                <span class="badge-tag" th:text="${pieza.fabricante}"></span>
+            </div>
+            <div class="pieza-details">
+                <div class="pieza-matricula" th:text="'#' + ${pieza.id_pieza}"></div>
+                <div class="pieza-marca" th:text="${pieza.nombre}"></div>
+                <div class="car-info">
+                    <span th:text="'Stock: ' + ${pieza.stock} + ' |'"><i
+                            class="fas fa-tachometer-alt"></i> </span>
+                    <span th:text="'Precio: ' + ${pieza.precio}"><i class="fas fa-cog"></i> </span>
                 </div>
             </div>
-        </div>
+        </a>
     </main>
 </div>
 
