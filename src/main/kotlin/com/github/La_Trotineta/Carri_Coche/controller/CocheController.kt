@@ -19,7 +19,7 @@ class CocheController(private val cocheService: CocheService) {
             marca != null && marca != "" -> listaCoche.filter { it.marca == marca }
             else -> listaCoche
         }
-        model.addAttribute("listaCoche", listaCoche)
+        model.addAttribute("listaCoches", listaCoche)
         model.addAttribute("coches", valores)
         model.addAttribute("marca", marca)
         return "coches/coches"

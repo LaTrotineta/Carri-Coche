@@ -52,7 +52,7 @@ body {
     margin-bottom: 15px;
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: #00B894;
+    color: #F39C12;
 }
 
 .filter-group {
@@ -82,7 +82,7 @@ body {
     gap: 20px;
 }
 
-.coche-card {
+.card {
     background: #121722;
     border-radius: 8px;
     overflow: hidden;
@@ -90,19 +90,20 @@ body {
     transition: 0.3s;
 }
 
-.coche-card:hover {
-    border-color: #00B894;
+.card:hover {
+    border-color: #F39C12;
     transform: translateY(-5px);
 }
 
-.coche-new {
+.new {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #F39C12;
 }
 
-.coche-img {
+.img {
     height: 160px;
     background: #1f2937;
     position: relative;
@@ -115,31 +116,31 @@ body {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #00B894;
+    background: #F39C12;
     font-size: 0.65rem;
     font-weight: bold;
     padding: 3px 8px;
     border-radius: 3px;
 }
 
-.coche-details {
+.details {
     padding: 15px;
 }
 
-.coche-matricula {
+.main-text {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 8px;
 }
 
-.coche-marca {
-    color: #00B894;
+.secundary-text {
+    color: #F39C12;
     font-weight: 800;
     font-size: 1.1rem;
     margin-bottom: 12px;
 }
 
-.coche-info {
+.info {
     font-size: 0.75rem;
     color: #9ca3af;
     display: flex;

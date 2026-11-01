@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>La Tritoneta - Catálogo de Vehículos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="/style/stylemecanicos.css" rel="stylesheet">
+    <link href="/style/mecanicos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -30,16 +30,16 @@
     </form>
 
     <main class="grid-container">
-        <a class="mecanico-card" th:each="mecanico : ${mecanicos}">
-            <div class="mecanico-img">
+        <a class="card" th:each="mecanico : ${mecanicos}">
+            <div class="img">
                 <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
                 <img alt="imagenCircuito" src="">
                 <span class="badge-tag" th:text="${mecanico.especialidad}"></span>
             </div>
-            <div class="mecanico-details">
-                <div class="mecanico-matricula" th:text="'#' + ${mecanico.id_mecanico}"></div>
-                <div class="mecanico-marca" th:text="${mecanico.nombre}"></div>
-                <div class="car-info">
+            <div class="details">
+                <div class="main-text" th:text="'#' + ${mecanico.id_mecanico}"></div>
+                <div class="secundary-text" th:text="'' + ${mecanico.nombre}"></div>
+                <div class="info">
                     <span th:text="'Experiencia: ' + ${mecanico.experiencia} + ' |'"><i
                             class="fas fa-tachometer-alt"></i> </span>
                     <span th:text="'Tarifa: ' + ${mecanico.tarifaHora} + '€/H'"><i class="fas fa-cog"></i> </span>
