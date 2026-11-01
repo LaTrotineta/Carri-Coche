@@ -11,8 +11,15 @@ class CircuitoController(private val circuitoService: CircuitoService) {
 
     // 1. LISTAR
     @GetMapping("/circuitos")
-    fun listarPlantas(model: Model): String {
-        model.addAttribute("circuitos", circuitoService.listar())
+    fun listarCircuitos(@RequestParam(name = "pais") pais: String? , model: Model): String {
+        val listaCircuitos = circuitoService.listar()
+        val valores = when {
+            pais != null && pais != "" -> listaCircuitos.filter { it.pais == pais }
+            else -> listaCircuitos
+        }
+        model.addAttribute("listaCircuitos", listaCircuitos)
+        model.addAttribute("circuitos", valores)
+        model.addAttribute("pais", pais)
         return "circuitos/circuitos"
     }
 

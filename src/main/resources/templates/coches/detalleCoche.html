@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Tritoneta - Detalle del Vehículo</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style/detalleCoche.css">
+    <link rel="stylesheet" href="/style/detalles/detalleCoche.css">
 </head>
 <body>
 
@@ -15,9 +15,9 @@
 </header>
 <main class="detail-card" th:object="${coche}">
     <h2 class="detail-title">DETALLE DEL COCHE</h2>
-    <p class="detail-subtitle">Especificaciones técnicas registradas en el sistema de La Tritoneta.</p>
+    <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
-    <div class="info-group" style="margin-bottom: 20px;">
+    <div class="info-group">
         <span class="info-label"><i class="fas fa-id-card"></i> Matrícula</span>
         <div class="info-value" th:text="${matricula}"/>
     </div>

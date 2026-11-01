@@ -1,8 +1,13 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', sans-serif;
+ }
+
+a {
+    text-decoration: none;
+    color: white;
 }
 
 body {
@@ -10,8 +15,6 @@ body {
     color: #fff;
     padding: 40px;
 }
-
-
 
 .header-nav {
     display: flex;
@@ -79,7 +82,7 @@ body {
     gap: 20px;
 }
 
-.circuitos-card {
+.card {
     background: #121722;
     border-radius: 8px;
     overflow: hidden;
@@ -87,12 +90,20 @@ body {
     transition: 0.3s;
 }
 
-.circuitos-card:hover {
+.card:hover {
     border-color: #1E56FF;
     transform: translateY(-5px);
 }
 
-.circuitos-img {
+.new {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1E56FF;
+}
+
+.img {
     height: 160px;
     background: #1f2937;
     position: relative;
@@ -112,24 +123,24 @@ body {
     border-radius: 3px;
 }
 
-.circuitos-details {
+.details {
     padding: 15px;
 }
 
-.circuitos-matricula {
+.main-text {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 8px;
 }
 
-.circuitos-marca {
+.secundary-text {
     color: #1E56FF;
     font-weight: 800;
     font-size: 1.1rem;
     margin-bottom: 12px;
 }
 
-.circuitos-info {
+.info {
     font-size: 0.75rem;
     color: #9ca3af;
     display: flex;

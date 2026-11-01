@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>La Tritoneta - Catálogo de Vehículos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="/style/stylecircuitos.css" rel="stylesheet">
+    <link href="/style/circuitos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -15,44 +15,41 @@
 </div>
 
 <div class="layout">
-    <aside class="filter-box">
-        <div class="filter-title"><i class="fas fa-filter"></i> Filtros</div>
+    <form class="filter-box" method="get">
+        <div class="filter-title">
+            <i class="fas fa-filter"> </i> Filtros
+        </div>
         <div class="filter-group">
             <label>Marca</label>
-            <select>
-                <option>Todas</option>
-                <option>Audi</option>
-                <option>BMW</option>
+            <select name="pais" onchange="this.form.submit()">
+                <option value="" th:selected="${marca == null && marca == ''}">Todos</option>
+                <option th:each="circuito : ${listaCircuitos}" th:value="${circuito.pais}" th:text="${circuito.pais}" th:selected="${pais != null && pais == circuito.pais}"></option>
             </select>
         </div>
-        <div class="filter-group">
-            <label>Tipo</label>
-            <select>
-                <option>Nuevos</option>
-                <option>Alquiler</option>
-            </select>
-        </div>
-    </aside>
+    </form>
 
     <main class="grid-container">
-        <div th:each="circuito : ${circuitos}">
-            <div class="circuitos-card">
-                <div class="circuitos-img">
-                    <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                    <img alt="imagenCircuito" src="">
-                    <span class="badge-tag" th:text="${circuito.pais}"></span>
-                </div>
-                <div class="circuitos-details">
-                    <div class="circuitos-matricula" th:text="'#' + ${circuito.id_circuito}"></div>
-                    <div class="circuitos-marca" th:text="${circuito.nombre}"></div>
-                    <div class="car-info">
-                        <span th:text="'Curvas: ' + ${circuito.curvas} + ' |'"><i
-                                class="fas fa-tachometer-alt"></i> </span>
-                        <span th:text="'Longitud: ' + ${circuito.longitud}"><i class="fas fa-cog"></i> </span>
-                    </div>
+
+        <a class="card new" th:href="@{/circuito/nuevo}">
+            <i class="fas fa-plus fa-3x"></i>
+        </a>
+
+        <a class="card" th:each="circuito : ${circuitos}">
+            <div class="img">
+                <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
+                <img alt="imagenCircuito" src="">
+                <span class="badge-tag" th:text="${circuito.pais}"></span>
+            </div>
+            <div class="details">
+                <div class="main-text" th:text="'#' + ${circuito.id_circuito}"></div>
+                <div class="secundary-text" th:text="${circuito.nombre}"></div>
+                <div class="info">
+                    <span th:text="'Curvas: ' + ${circuito.curvas} + ' |'"><i
+                            class="fas fa-tachometer-alt"></i> </span>
+                    <span th:text="'Longitud: ' + ${circuito.longitud}"><i class="fas fa-cog"></i> </span>
                 </div>
             </div>
-        </div>
+        </a>
     </main>
 </div>
 
