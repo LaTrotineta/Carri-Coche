@@ -6,6 +6,15 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
+
+/**
+ *
+ * @author Antonio de la torre Gimenez
+ * Entidad: Mecanicos
+ *
+ * */
+
+
 @Controller
 class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
 
@@ -24,7 +33,7 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
         return "mecanicos/detalleMecanico"
     }
 
-    // 3. FORMULARIO NUEVA PLANTA (pasa un objeto vacío con ID 0)
+    // 3. FORMULARIO NUEVO MECANICO (pasa un objeto vacío con ID 0)
     @GetMapping("/mecanico/nuevo")
     fun nuevoMecanico(model: Model): String {
         val mecanicoVacio = Mecanico(0, "", "", 0, 0.0)
@@ -33,7 +42,7 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
         return "mecanicos/formMecanico"
     }
 
-    // 4. FORMULARIO EDITAR PLANTA (pasa el objeto existente)
+    // 4. FORMULARIO EDITAR MECANICO (pasa el objeto existente)
     @GetMapping("/mecanico/editar/{id_mecanico}")
     fun editarMecanico(@PathVariable id_mecanico: Int, model: Model): String {
         val mecanico = mecanicoServicio.buscar(id_mecanico) ?: return "redirect:/mecanicos"
