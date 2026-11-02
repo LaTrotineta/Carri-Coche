@@ -4,15 +4,25 @@ import com.github.La_Trotineta.Carri_Coche.model.Circuito
 import com.github.La_Trotineta.Carri_Coche.model.Coche
 import com.github.La_Trotineta.Carri_Coche.model.Mecanico
 import com.github.La_Trotineta.Carri_Coche.model.Pieza
-import com.github.La_Trotineta.Carri_Coche.util.Utils
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
 import java.nio.file.Files
 import java.nio.file.Path
 
+/**
+ * @author Junfeng
+ *
+ * Gestor de CSV Generico
+ *
+ * @param path ruta del archivo
+ * @param delimiterCSV asignacion del delimitador del CSV
+ */
 class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
     init {
-        Utils.crearArchivoSiNoExiste(path)
+        Files.createDirectories(path.parent)
+        if (!Files.exists(path)) {
+            Files.createFile(path)
+        }
     }
 
     inline fun <reified T> leerCSV(): List<T> {
