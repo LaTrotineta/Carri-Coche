@@ -5,7 +5,10 @@ import com.github.La_Trotineta.Carri_Coche.service.CircuitoService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
-
+/**
+ * @author Alexander Juan Drago
+ * Entidad:Circuitos
+* */
 @Controller
 class CircuitoController(private val circuitoService: CircuitoService) {
 

@@ -1,5 +1,9 @@
 package com.github.La_Trotineta.Carri_Coche.model
 
+/**
+ * @author Alexander Juan Drago
+ * Entidad:Circuitos
+ */
 data class Circuito(
     val id_circuito : Int,
     var nombre :String,
