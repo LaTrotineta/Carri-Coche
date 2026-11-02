@@ -7,10 +7,14 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Repository
 import java.nio.file.Path
 
+/**
+ * @author
+ *
+ * Repositorio de coche
+ */
 @Repository
 class CocheRepository(
-    @Value("classpath:data/coches.csv")
-    private val archivo: Resource
+    @Value("classpath:data/coches.csv") archivo: Resource
 ) {
     private val gestor: GestorCSV = GestorCSV(Path.of(archivo.uri))
     private val coches: MutableMap<String, Coche> = gestor.leerCSV<Coche>().associateBy { it.matricula } as MutableMap<String, Coche>

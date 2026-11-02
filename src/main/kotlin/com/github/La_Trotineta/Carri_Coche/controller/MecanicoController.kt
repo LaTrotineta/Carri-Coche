@@ -28,7 +28,7 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
     // 2. DETALLE
     @GetMapping("/mecanico/{id_mecanico}")
     fun verMecanico(@PathVariable id_mecanico: Int, model: Model): String {
-        val mecanico = mecanicoServicio.buscar(id_mecanico) ?: return "errorMecanico"
+        val mecanico = mecanicoServicio.buscar(id_mecanico) ?: return "error"
         model.addAttribute("mecanico", mecanico)
         return "mecanicos/detalleMecanico"
     }
