@@ -11,23 +11,20 @@ import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
 class PiezaController (private val piezaService : PiezaService) {
-    // 1. LISTAR
     @GetMapping("/piezas")
     fun listarPiezas(model: Model): String {
         model.addAttribute("piezas", piezaService.listar())
         return "piezas/piezas"
     }
 
-    // 2. DETALLE
     @GetMapping("/pieza/{id_pieza}")
     fun verPieza(@PathVariable id_pieza: Int, model: Model): String {
-        val pieza = piezaService.buscar(id_pieza) ?: return "errorPieza"
+        val pieza = piezaService.buscar(id_pieza) ?: return "error"
         model.addAttribute("pieza", pieza)
         return "piezas/detallePieza"
     }
 
-    // 3. FORMULARIO NUEVA PLANTA (pasa un objeto vacío con ID 0)
-    @GetMapping("/piezas/nueva")
+    @GetMapping("/pieza/nuevo")
     fun nuevaPieza(model: Model): String {
         val piezaVacia = Pieza(0, "", "", 0, 0.0)
         model.addAttribute("pieza", piezaVacia)
@@ -35,8 +32,7 @@ class PiezaController (private val piezaService : PiezaService) {
         return "piezas/formPieza"
     }
 
-    // 4. FORMULARIO EDITAR PLANTA (pasa el objeto existente)
-    @GetMapping("/piezas/editar/{id_pieza}")
+    @GetMapping("/pieza/editar/{id_pieza}")
     fun editarPieza(@PathVariable id_pieza: Int, model: Model): String {
         val pieza = piezaService.buscar(id_pieza) ?: return "redirect:/piezas"
         model.addAttribute("pieza", pieza)
@@ -44,15 +40,13 @@ class PiezaController (private val piezaService : PiezaService) {
         return "piezas/formPieza"
     }
 
-    // 5. PROCESAR GUARDADO (Sirve tanto para crear como para editar)
-    @PostMapping("/piezas/guardar")
+    @PostMapping("/pieza/guardar")
     fun guardarPieza(@ModelAttribute pieza: Pieza): String {
         piezaService.guardar(pieza)
         return "redirect:/piezas"
     }
 
-    // 6. PROCESAR BORRADO
-    @GetMapping("/piezas/borrar/{id_pieza}")
+    @GetMapping("/pieza/borrar/{id_pieza}")
     fun borrarPieza(@PathVariable id_pieza: Int): String {
         piezaService.borrar(id_pieza)
         return "redirect:/piezas"
