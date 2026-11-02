@@ -20,11 +20,11 @@
     <div class="info-group">
         <th:block th:if="${titulo == 'Nuevo Mecanico'}">
             <label for="nuevaId" class="info-label"><i class="fas fa-id-card"></i> Id</label>
-            <input  type="text" id="nuevaId" th:field="*{id_mecanico}" class="info-value" required />
+            <input  type="number" id="nuevaId" th:field="*{id_mecanico}" class="info-value" required />
         </th:block>
         <th:block th:unless="${titulo == 'Nuevo Mecanico'}">
             <label for="id" class="info-label"><i class="fas fa-id-card"></i> Id</label>
-            <input type="number" id="id" th:field="*{id_mecanico}" class="info-value" readonly />
+            <input type="text" id="id" th:field="*{id_mecanico}" class="info-value" readonly />
         </th:block>
     </div>
 
@@ -53,9 +53,6 @@
     <div class="card-actions">
         <a class="btn btn-outline" href="/mecanicos" th:if="${titulo == 'Nuevo Mecanico'}"><i class="fas fa-arrow-left"></i> Volver</a>
         <a class="btn btn-outline" th:href="'/mecanico/' + ${mecanico.id_mecanico}" th:unless="${titulo == 'Nuevo Mecanico'}"><i class="fas fa-arrow-left"></i> Volver</a>
-        
-        <a class="btn btn-red" th:href="'/mecanico/borrar/' + ${mecanico.id_mecanico}" th:if="${titulo != 'Nuevo Mecanico'}"><i class="fas fa-trash"></i> Borrar</a>
-
         <button type="submit" class="btn btn-red"><i class="fas fa-save"></i> Guardar</button>
     </div>
 </form>

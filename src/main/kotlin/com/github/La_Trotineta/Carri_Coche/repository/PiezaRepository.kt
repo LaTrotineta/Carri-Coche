@@ -14,8 +14,7 @@ import java.nio.file.Path
  */
 @Repository
 class PiezaRepository(
-    @Value("classpath:data/piezas.csv")
-    private val archivo: Resource
+    @Value("classpath:data/piezas.csv") archivo: Resource
 ) {
     private val gestor: GestorCSV = GestorCSV(Path.of(archivo.uri))
     private val piezas: MutableList<Pieza> = gestor.leerCSV<Pieza>() as MutableList<Pieza>
