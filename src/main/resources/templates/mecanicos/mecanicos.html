@@ -36,7 +36,7 @@
         <a class="card" th:each="mecanico : ${mecanicos}" th:href="'/mecanico/' + ${mecanico.id_mecanico}">
             <div class="img">
                 <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                <img alt="imagenCircuito" src="">
+                <img alt="imagenMecanico" src="">
                 <span class="badge-tag" th:text="${mecanico.especialidad}"></span>
             </div>
             <div class="details">
