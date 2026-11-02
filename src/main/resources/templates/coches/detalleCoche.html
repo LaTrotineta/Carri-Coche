@@ -47,7 +47,7 @@
     <div class="card-actions">
         <a class="btn btn-outline" href="/coches"><i class="fas fa-arrow-left"></i> Volver</a>
 
-        <a class="btn btn-red" th:href="'/coche/borrar/' + ${coche.matricula}"><i class="fas fa-trash"></i> Borrar</a>
+        <a class="btn btn-red" onclick="return confirm('¿Estás seguro de que deseas borrar este coche?\nEsta acción no se puede deshacer.');" th:href="'/coche/borrar/' + ${coche.matricula}"><i class="fas fa-trash"></i> Borrar</a>
         <a class="btn btn-red" th:href="'/coche/editar/' + ${coche.matricula}"><i class="fas fa-save"></i>Editar</a>
     </div>
 </main>

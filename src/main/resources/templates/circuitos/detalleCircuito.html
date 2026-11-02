@@ -47,7 +47,7 @@
     <div class="card-actions">
         <a class="btn btn-outline" href="/circuitos"><i class="fas fa-arrow-left"></i> Volver</a>
 
-        <a class="btn btn-red" th:href="'/circuito/borrar/' + ${circuito.id_circuito}"><i class="fas fa-trash"></i> Borrar</a>
+        <a class="btn btn-red" onclick="return confirm('¿Estás seguro de que deseas borrar este circuito?\nEsta acción no se puede deshacer.');" th:href="'/circuito/borrar/' + ${circuito.id_circuito}"><i class="fas fa-trash"></i> Borrar</a>
         <a class="btn btn-red" th:href="'/circuito/editar/' + ${circuito.id_circuito}"><i class="fas fa-save"></i>Editar</a>
     </div>
 </main>

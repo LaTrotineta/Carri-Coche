@@ -48,7 +48,7 @@
     <div class="card-actions">
         <a class="btn btn-outline" href="/piezas"><i class="fas fa-arrow-left"></i> Volver</a>
 
-        <a class="btn btn-red" th:href="'/pieza/borrar/' + ${pieza.id_pieza}"><i class="fas fa-trash"></i> Borrar</a>
+        <a class="btn btn-red" onclick="return confirm('¿Estás seguro de que deseas borrar esta pieza?\nEsta acción no se puede deshacer.');" th:href="'/pieza/borrar/' + ${pieza.id_pieza}"><i class="fas fa-trash"></i> Borrar</a>
         <a class="btn btn-red" th:href="'/pieza/editar/' + ${pieza.id_pieza}"><i class="fas fa-save"></i>Editar</a>
     </div>
 </main>

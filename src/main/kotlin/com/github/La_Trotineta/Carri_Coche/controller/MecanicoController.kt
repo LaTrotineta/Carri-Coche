@@ -20,8 +20,15 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
 
     // 1. LISTAR
     @GetMapping("/mecanicos")
-    fun listarMecanicos(model: Model): String {
-        model.addAttribute("mecanicos", mecanicoServicio.listar())
+    fun listarMecanicos(@RequestParam(name = "especialidad", required = false) especialidad:String?, model: Model): String {
+        val listaMecanicos = mecanicoServicio.listar()
+        val valores = when {
+            especialidad != null && especialidad != "" -> listaMecanicos.filter { it.especialidad == especialidad }
+            else -> listaMecanicos
+        }
+        model.addAttribute("listamecanicos", listaMecanicos)
+        model.addAttribute("mecanicos", valores)
+        model.addAttribute("especialidad", especialidad)
         return "mecanicos/mecanicos"
     }
 
