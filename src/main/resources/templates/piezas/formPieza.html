@@ -18,9 +18,9 @@
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
     <div class="info-group" style="margin-bottom: 20px;">
-        <th:block th:if="${titulo == 'Nueva Coche'}">
+        <th:block th:if="${titulo == 'Nueva Pieza'}">
             <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> ID</label>
-            <input  type="text" id="nuevaMatricula"th:field="*{id_pieza}" class="info-value" required />
+            <input  type="number" id="nuevaMatricula"th:field="*{id_pieza}" class="info-value" required />
         </th:block>
         <th:block th:unless="${titulo == 'Nueva Pieza'}">
             <label for="id_pieza" class="info-label"><i class="fas fa-id-card"></i> ID</label>
