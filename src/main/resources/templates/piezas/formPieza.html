@@ -16,7 +16,6 @@
 <form class="detail-card" th:action="@{/pieza/guardar}" th:object="${pieza}" method="post">
     <h2 class="detail-title" th:text="${titulo}"></h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
-
     <div class="info-group" style="margin-bottom: 20px;">
         <th:block th:if="${titulo == 'Nueva Pieza'}">
             <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> ID</label>
