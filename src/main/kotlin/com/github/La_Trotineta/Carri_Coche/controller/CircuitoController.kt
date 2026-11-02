@@ -26,21 +26,21 @@ class CircuitoController(private val circuitoService: CircuitoService) {
     // 2. DETALLE
     @GetMapping("/circuito/{id_circuito}")
     fun verCircuito(@PathVariable id_circuito: Int, model: Model): String {
-        val circuito = circuitoService.buscar(id_circuito) ?: return "errorCircuitos"
+        val circuito = circuitoService.buscar(id_circuito) ?: return "error"
         model.addAttribute("circuito", circuito)
         return "circuitos/detalleCircuito"
     }
     // 3. FORMULARIO NUEVA PLANTA (pasa un objeto vacío con ID 0)
-    @GetMapping("/circuitos/nueva")
+    @GetMapping("/circuito/nuevo")
     fun nuevoCircuito(model: Model): String {
         val circuitoVacia = Circuito(0, "", "", 0, 0.0)
         model.addAttribute("circuito", circuitoVacia)
-        model.addAttribute("titulo", "Nueva Circuito")
+        model.addAttribute("titulo", "Nuevo Circuito")
         return "circuitos/formCircuito"
     }
 
     // 4. FORMULARIO EDITAR PLANTA (pasa el objeto existente)
-    @GetMapping("/circuitos/editar/{id_circuito}")
+    @GetMapping("/circuito/editar/{id_circuito}")
     fun editarCircuito(@PathVariable id_circuito: Int, model: Model): String {
         val circuito = circuitoService.buscar(id_circuito) ?: return "redirect:/circuitos"
         model.addAttribute("circuito", circuito)
@@ -49,14 +49,14 @@ class CircuitoController(private val circuitoService: CircuitoService) {
     }
 
     // 5. PROCESAR GUARDADO (Sirve tanto para crear como para editar)
-    @PostMapping("/circuitos/guardar")
+    @PostMapping("/circuito/guardar")
     fun guardarCircuito(@ModelAttribute circuito: Circuito): String {
         circuitoService.guardar(circuito)
         return "redirect:/circuitos"
     }
 
     // 6. PROCESAR BORRADO
-    @GetMapping("/circuitos/borrar/{id_circuito}")
+    @GetMapping("/circuito/borrar/{id_circuito}")
     fun borrarCircuito(@PathVariable id_circuito: Int): String {
         circuitoService.borrar(id_circuito)
         return "redirect:/circuitos"

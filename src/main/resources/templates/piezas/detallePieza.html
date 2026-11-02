@@ -11,42 +11,44 @@
 
 <header class="header-nav">
     <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
-    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
+<!--    <a href="/piezas" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
 </header>
-<main class="detail-card" th:object="${coche}">
-    <h2 class="detail-title">DETALLE DEL COCHE</h2>
+<main class="detail-card" th:object="${pieza}">
+    <h2 class="detail-title">DETALLE DEL PIEZA</h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
     <div class="info-group">
-        <span class="info-label"><i class="fas fa-id-card"></i> Matrícula</span>
-        <div class="info-value" th:text="${matricula}"/>
+        <span class="info-label"><i class="fas fa-id-card"></i> ID</span>
+        <div class="info-value" th:text="${id_pieza}"/>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-industry"></i> Marca</span>
-            <span class="info-value" th:text="*{marca}"/>
+            <span class="info-label"><i class="fas fa-industry"></i> Nombre</span>
+            <div class="info-value" th:text="*{nombre}"/>
         </div>
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-car-side"></i> Modelo</span>
-            <div class="info-value" th:text="*{modelo}"/>
+            <span class="info-label"><i class="fas fa-car-side"></i> Fabricante</span>
+            <div class="info-value" th:text="*{fabricante}"/>
         </div>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-bolt"></i> Potencia</span>
-            <div class="info-value" th:text="*{potencia}"/>
+            <span class="info-label"><i class="fas fa-bolt"></i> Stock</span>
+            <div class="info-value" th:text="*{stock}"/>
         </div>
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-gas-pump"></i> Consumo</span>
-            <div class="info-value" th:text="*{consumo}"/>
+            <span class="info-label"><i class="fas fa-gas-pump"></i> Precio</span>
+            <div class="info-value" th:text="*{precio}"/>
         </div>
     </div>
 
     <div class="card-actions">
-        <a class="btn btn-outline" th:href="'/coche/borrar/' + ${coche.matricula}"><i class="fas fa-trash"></i> Borrar</a>
-        <a class="btn btn-red" th:href="'/coche/editar/' + ${coche.matricula}"><i class="fas fa-save"></i>Editar</a>
+        <a class="btn btn-outline" href="/piezas"><i class="fas fa-arrow-left"></i> Volver</a>
+
+        <a class="btn btn-red" th:href="'/pieza/borrar/' + ${pieza.id_pieza}"><i class="fas fa-trash"></i> Borrar</a>
+        <a class="btn btn-red" th:href="'/pieza/editar/' + ${pieza.id_pieza}"><i class="fas fa-save"></i>Editar</a>
     </div>
 </main>
 </body>
