@@ -7,7 +7,11 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Repository
 import java.nio.file.Path
 
-
+/**
+ * @author Alexander Juan Drago
+ * Entidad:Circuitos
+ *
+ */
 @Repository
 class CircuitoRepository(
     @Value("classpath:data/circuitos.csv")

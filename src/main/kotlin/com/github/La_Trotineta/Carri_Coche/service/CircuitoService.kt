@@ -5,7 +5,10 @@ import com.github.La_Trotineta.Carri_Coche.model.Circuito
 import com.github.La_Trotineta.Carri_Coche.repository.CircuitoRepository
 import org.springframework.stereotype.Service
 import java.nio.file.Path
-
+/**
+ * @author Alexander Juan Drago
+ * Entidad:Circuitos
+ */
 @Service
 class CircuitoService(private val repository: CircuitoRepository) {
 
