@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 /**
  *
  * @author Antonio de la torre Gimenez
- * Entidad: Vehiculos
+ * Entidad: Mecanicos
  *
  * */
 

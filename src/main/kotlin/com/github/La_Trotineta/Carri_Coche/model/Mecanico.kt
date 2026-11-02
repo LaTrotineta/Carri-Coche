@@ -3,7 +3,7 @@ package com.github.La_Trotineta.Carri_Coche.model
 /**
  *
  * @author Antonio de la torre Gimenez
- * Entidad: Vehiculos
+ * Entidad: Mecanicos
  *
  * */
 

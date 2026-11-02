@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 /**
  *
  * @author Antonio de la torre Gimenez
- * Entidad: Vehiculos
+ * Entidad: Mecanicos
  *
  * */
 

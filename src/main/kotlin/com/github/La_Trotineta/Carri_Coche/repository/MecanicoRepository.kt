@@ -11,7 +11,7 @@ import java.nio.file.Path
 /**
  *
  * @author Antonio de la torre Gimenez
- * Entidad: Vehiculos
+ * Entidad: Mecanicos
  *
  * */
 
