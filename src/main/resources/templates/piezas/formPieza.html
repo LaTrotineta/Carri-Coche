@@ -13,46 +13,45 @@
     <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
     <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
 </header>
-<form class="detail-card" th:action="@{/coche/guardar}" th:object="${coche}" method="post">
+<form class="detail-card" th:action="@{/pieza/guardar}" th:object="${pieza}" method="post">
     <h2 class="detail-title" th:text="${titulo}"></h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
-
     <div class="info-group" style="margin-bottom: 20px;">
-        <th:block th:if="${titulo == 'Nueva Coche'}">
-            <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
-            <input  type="text" id="nuevaMatricula"th:field="*{matricula}" class="info-value" required />
+        <th:block th:if="${titulo == 'Nueva Pieza'}">
+            <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> ID</label>
+            <input  type="number" id="nuevaMatricula"th:field="*{id_pieza}" class="info-value" required />
         </th:block>
-        <th:block th:unless="${titulo == 'Nueva Coche'}">
-            <label for="matricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
-            <input th:unless="${titulo == 'Nueva Coche'}" type="text" id="matricula"th:field="*{matricula}" class="info-value" readonly />
+        <th:block th:unless="${titulo == 'Nueva Pieza'}">
+            <label for="id_pieza" class="info-label"><i class="fas fa-id-card"></i> ID</label>
+            <input th:unless="${titulo == 'Nueva Pieza'}" type="text" id="id_pieza" th:field="*{id_pieza}" class="info-value" readonly />
         </th:block>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="marca" class="info-label"><i class="fas fa-industry"></i> Marca</label>
-            <input type="text" id="marca" th:field="*{marca}" class="info-value" required />
+            <label for="nombre" class="info-label"><i class="fas fa-industry"></i> Nombre</label>
+            <input type="text" id="nombre" th:field="*{nombre}" class="info-value" required />
         </div>
         <div class="info-group">
-            <label for="modelo" class="info-label"><i class="fas fa-car-side"></i> Modelo</label>
-            <input type="text" id="modelo" th:field="*{modelo}" class="info-value" required />
+            <label for="fabricante" class="info-label"><i class="fas fa-car-side"></i> Fabricante</label>
+            <input type="text" id="fabricante" th:field="*{fabricante}" class="info-value" required />
         </div>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="potencia" class="info-label"><i class="fas fa-bolt"></i> Potencia</label>
-            <input type="number" step="any" id="potencia" th:field="*{potencia}" class="info-value" required />
+            <label for="stock" class="info-label"><i class="fas fa-bolt"></i> Stock</label>
+            <input type="number" step="any" id="stock" th:field="*{stock}" class="info-value" required />
         </div>
         <div class="info-group">
-            <label for="consumo" class="info-label"><i class="fas fa-gas-pump"></i> Consumo</label>
-            <input type="number" step="any" id="consumo" th:field="*{consumo}" class="info-value" required />
+            <label for="precio" class="info-label"><i class="fas fa-gas-pump"></i> Precio</label>
+            <input type="number" step="any" id="precio" th:field="*{precio}" class="info-value" required />
         </div>
     </div>
 
     <div class="card-actions">
-        <a class="btn btn-outline" href="/coches" th:if="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
-        <a class="btn btn-outline" th:href="'/coche/' + ${coche.matricula}" th:unless="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" href="/piezas" th:if="${titulo == 'Nueva Pieza'}"><i class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" th:href="'/pieza/' + ${pieza.id_pieza}" th:unless="${titulo == 'Nueva Pieza'}"><i class="fas fa-arrow-left"></i> Volver</a>
         <button type="submit" class="btn btn-red"><i class="fas fa-save"></i> Guardar</button>
     </div>
 </form>

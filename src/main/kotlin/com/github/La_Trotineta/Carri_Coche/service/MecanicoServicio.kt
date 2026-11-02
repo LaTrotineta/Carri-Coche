@@ -5,6 +5,13 @@ import com.github.La_Trotineta.Carri_Coche.model.Mecanico
 import com.github.La_Trotineta.Carri_Coche.repository.MecanicoRepository
 import org.springframework.stereotype.Service
 
+/**
+ *
+ * @author Antonio de la torre Gimenez
+ * Entidad: Mecanicos
+ *
+ * */
+
 @Service
 class MecanicoServicio(private val repository: MecanicoRepository) {
     

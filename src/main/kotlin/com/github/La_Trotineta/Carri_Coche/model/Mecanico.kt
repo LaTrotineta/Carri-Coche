@@ -1,5 +1,12 @@
 package com.github.La_Trotineta.Carri_Coche.model
 
+/**
+ *
+ * @author Antonio de la torre Gimenez
+ * Entidad: Mecanicos
+ *
+ * */
+
 data class Mecanico(
     val id_mecanico: Int,
     val nombre: String,

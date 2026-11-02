@@ -1,6 +1,5 @@
 package com.github.La_Trotineta.Carri_Coche.repository
 
-
 import com.github.La_Trotineta.Carri_Coche.model.Mecanico
 import com.github.junfeng52.servicio.GestorCSV
 import org.springframework.beans.factory.annotation.Value
@@ -8,12 +7,18 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Repository
 import java.nio.file.Path
 
+/**
+ *
+ * @author Antonio de la torre Gimenez
+ * Entidad: Mecanicos
+ *
+ * */
+
 @Repository
-class MecanicoRepository (
-    @Value("classpath:/data/mecanicos.csv")
-    private val archivo: Resource
+class MecanicoRepository(
+    @Value("classpath:data/mecanicos.csv") archivo: Resource
 ) {
-    val gestor: GestorCSV = GestorCSV(Path.of(archivo.uri))
+    private val gestor: GestorCSV = GestorCSV(Path.of(archivo.uri))
     private val mecanicos = gestor.leerCSV<Mecanico>() as MutableList<Mecanico>
 
     fun leerTodasMecanicos(): MutableList<Mecanico> = mecanicos

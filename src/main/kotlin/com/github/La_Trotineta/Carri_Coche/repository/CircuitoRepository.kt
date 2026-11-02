@@ -14,11 +14,9 @@ import java.nio.file.Path
  */
 @Repository
 class CircuitoRepository(
-    @Value("classpath:data/circuitos.csv")
-    private val archivo: Resource
+    @Value("classpath:data/circuitos.csv") archivo: Resource
 ) {
     private val gestor: GestorCSV = GestorCSV(Path.of(archivo.uri))
-    // La lista en memoria se traslada aquí y actúa como nuestra "Base de Datos" temporal
     private val circuitos = gestor.leerCSV<Circuito>() as MutableList<Circuito>
 
     fun leerTodosCircuitos(): MutableList<Circuito> = circuitos
@@ -28,10 +26,8 @@ class CircuitoRepository(
     fun guardarCircuito(circuito: Circuito) {
         val index = circuitos.indexOfFirst { it.id_circuito == circuito.id_circuito }
         if (index != -1) {
-            // Edición de planta existente
             circuitos[index] = circuito
         } else {
-            // Creación de nueva planta (simulación de ID autoincremental)
             val nuevoId = (circuitos.maxOfOrNull { it.id_circuito } ?: 0) + 1
             circuitos.add(circuito.copy(id_circuito = nuevoId))
         }
