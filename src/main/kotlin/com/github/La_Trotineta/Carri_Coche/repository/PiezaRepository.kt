@@ -7,6 +7,11 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Repository
 import java.nio.file.Path
 
+
+/**
+ * @author Santiago Gonzalez Quijada
+ * Entidad: PiezaRepository
+ */
 @Repository
 class PiezaRepository(
     @Value("classpath:data/piezas.csv")
