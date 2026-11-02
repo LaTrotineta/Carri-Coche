@@ -51,13 +51,13 @@ class CocheController(private val cocheService: CocheService) {
 
     // 5. PROCESAR GUARDADO (Sirve tanto para crear como para editar)
     @PostMapping("/coche/guardar")
-    fun guardarPlanta(@ModelAttribute coche: Coche): String {
+    fun guardarCoche(@ModelAttribute coche: Coche): String {
         cocheService.guardar(coche)
         return "redirect:/coches"
     }
 
     // 6. PROCESAR BORRADO
-    @GetMapping("/coches/borrar/{matricula}")
+    @GetMapping("/coche/borrar/{matricula}")
     fun borrarCoche(@PathVariable matricula: String): String {
         cocheService.borrar(matricula)
         return "redirect:/coches"

@@ -9,11 +9,6 @@ a {
     color: white;
 }
 
-img {
-    filter: brightness(0.5);
-    opacity: 0.8;
-}
-
 body {
     background-color: #0b0e14;
     color: #ffffff;
@@ -30,7 +25,7 @@ body {
     padding: 60px 40px;
     min-height: 100vh;
     position: relative;
-    background: radial-gradient(circle at bottom center, rgba(230, 0, 35, 0.15), transparent 50%);
+    /*background: radial-gradient(circle at bottom center, rgba(230, 0, 35, 0.15), transparent 50%);*/
 }
 
 /* Título y Subtítulo en el centro superior */
@@ -77,7 +72,7 @@ body {
     overflow: hidden;
     transform: skewX(-10deg);
     transition: transform 0.3s, flex 0.3s;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     background-size: cover;
     background-position: center;
 }
@@ -85,23 +80,29 @@ body {
 .skew-card:hover {
     flex: 1.3;
     transform: skewX(-10deg) scale(1.02);
+
+}
+
+.opacity {
+    filter: brightness(0.5);
+    opacity: 0.95;
 }
 
 /* Degradados de color para cada tarjeta */
 .overlay-blue {
-    background: linear-gradient(180deg, rgba(30, 86, 255, 0.7) 0%, rgba(11, 14, 20, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(30, 86, 255, 0.7) 0%, rgba(30, 86, 255, 0.7) 100%);
 }
 
 .overlay-red {
-    background: linear-gradient(180deg, rgba(255, 29, 53, 0.75) 0%, rgba(11, 14, 20, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(255, 29, 53, 0.75) 0%, rgba(255, 29, 53, 0.75) 100%);
 }
 
 .overlay-green {
-    background: linear-gradient(180deg, rgba(0, 184, 148, 0.6) 0%, rgba(11, 14, 20, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(0, 184, 148, 0.6) 0%, rgba(0, 184, 148, 0.6) 100%);
 }
 
 .overlay-yellow {
-    background: linear-gradient(180deg, rgba(243, 156, 18, 0.7) 0%, rgba(11, 14, 20, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(243, 156, 18, 0.7) 0%, rgba(243, 156, 18, 0.7) 100%);
 }
 
 .card-title {

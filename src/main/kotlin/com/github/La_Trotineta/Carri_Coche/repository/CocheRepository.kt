@@ -21,7 +21,7 @@ class CocheRepository(
 
     fun guardarCoche(coche: Coche) {
         coches[coche.matricula] = coche
-        gestor.escribirCSV(coches.values.toList())
+        gestor.escribirCSV<Coche>(coches.values.toList())
     }
 
     fun borrarPorMatricula(matricula: String) {
