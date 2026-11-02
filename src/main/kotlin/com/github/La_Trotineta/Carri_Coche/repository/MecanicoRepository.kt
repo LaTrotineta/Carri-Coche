@@ -35,6 +35,7 @@ class MecanicoRepository (
 
     fun borrarPorId(id_mecanico: Int) {
         mecanicos.removeAll { it.id_mecanico == id_mecanico }
+        gestor.escribirCSV<Mecanico>(mecanicos)
     }
 
 }

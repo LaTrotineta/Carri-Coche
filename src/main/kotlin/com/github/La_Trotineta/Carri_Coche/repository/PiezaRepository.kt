@@ -25,9 +25,12 @@ class PiezaRepository(
             val nuevoId = (piezas.maxOfOrNull { it.id_pieza } ?: 0) + 1
             piezas.add(pieza.copy(id_pieza = nuevoId))
         }
+        gestor.escribirCSV<Pieza>(piezas)
     }
 
     fun borrarPorId(id_pieza : Int) {
         piezas.removeAll { it.id_pieza == id_pieza }
+        gestor.escribirCSV<Pieza>(piezas)
+
     }
 }

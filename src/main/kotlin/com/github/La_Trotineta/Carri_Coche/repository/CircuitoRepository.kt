@@ -31,11 +31,11 @@ class CircuitoRepository(
             val nuevoId = (circuitos.maxOfOrNull { it.id_circuito } ?: 0) + 1
             circuitos.add(circuito.copy(id_circuito = nuevoId))
         }
-        gestor.escribirCSV(circuitos)
+        gestor.escribirCSV<Circuito>(circuitos)
     }
 
     fun borrarPorId(id_circuito: Int) {
         circuitos.removeAll { it.id_circuito == id_circuito }
-        gestor.escribirCSV(circuitos)
+        gestor.escribirCSV<Circuito>(circuitos)
     }
 }

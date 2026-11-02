@@ -11,7 +11,7 @@
 
 <header class="header-nav">
     <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
-    <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
+    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
 </header>
 <main class="detail-card" th:object="${coche}">
     <h2 class="detail-title">DETALLE DEL COCHE</h2>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="card-actions">
-        <a class="btn btn-outline" href="/coches"><i class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" th:href="'/coche/borrar/' + ${coche.matricula}"><i class="fas fa-trash"></i> Borrar</a>
         <a class="btn btn-red" th:href="'/coche/editar/' + ${coche.matricula}"><i class="fas fa-save"></i>Editar</a>
     </div>
 </main>
