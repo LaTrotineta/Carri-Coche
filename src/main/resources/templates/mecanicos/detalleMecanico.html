@@ -11,42 +11,44 @@
 
 <header class="header-nav">
     <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
-    <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
+    <a href="/mecanicos" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
 </header>
-<main class="detail-card" th:object="${coche}">
-    <h2 class="detail-title">DETALLE DEL COCHE</h2>
+<main class="detail-card" th:object="${mecanico}">
+    <h2 class="detail-title">DETALLE DEL MECANICO</h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
-    <div class="info-group" style="margin-bottom: 20px;">
-        <span class="info-label"><i class="fas fa-id-card"></i> Matrícula</span>
-        <div class="info-value" th:text="${matricula}"/>
+    <div class="info-group">
+        <span class="info-label"><i class="fas fa-id-card"></i> ID</span>
+        <div class="info-value" th:text="${id_mecanico}"/>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-industry"></i> Marca</span>
-            <span class="info-value" th:text="*{marca}"/>
+            <span class="info-label"><i class="fas fa-industry"></i> Nombre</span>
+            <div class="info-value" th:text="*{nombre}"/>
         </div>
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-car-side"></i> Modelo</span>
-            <div class="info-value" th:text="*{modelo}"/>
+            <span class="info-label"><i class="fas fa-car-side"></i> Especialidad</span>
+            <div class="info-value" th:text="*{especialidad}"/>
         </div>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-bolt"></i> Potencia</span>
-            <div class="info-value" th:text="*{potencia}"/>
+            <span class="info-label"><i class="fas fa-bolt"></i> Experiencia</span>
+            <div class="info-value" th:text="*{experiencia}"/>
         </div>
         <div class="info-group">
-            <span class="info-label"><i class="fas fa-gas-pump"></i> Consumo</span>
-            <div class="info-value" th:text="*{consumo}"/>
+            <span class="info-label"><i class="fas fa-gas-pump"></i> Tarifa Hora</span>
+            <div class="info-value" th:text="*{tarifaHora}"/>
         </div>
     </div>
 
     <div class="card-actions">
-        <a class="btn btn-outline" href="/coches"><i class="fas fa-arrow-left"></i> Volver</a>
-        <a class="btn btn-red" th:href="'/coche/editar/' + ${coche.matricula}"><i class="fas fa-save"></i>Editar</a>
+        <a class="btn btn-outline" tjhref="/mecanicos"><i class="fas fa-arrow-left"></i> Volver</a>
+
+        <a class="btn btn-red" th:href="'/mecanico/borrar/' + ${mecanico.id_mecanico}"><i class="fas fa-trash"></i> Borrar</a>
+        <a class="btn btn-red" th:href="'/mecanico/editar/' + ${mecanico.id_mecanico}"><i class="fas fa-save"></i>Editar</a>
     </div>
 </main>
 </body>

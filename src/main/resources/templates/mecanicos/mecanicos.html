@@ -30,7 +30,10 @@
     </form>
 
     <main class="grid-container">
-        <a class="card" th:each="mecanico : ${mecanicos}">
+        <a class="card new" th:href="@{/mecanico/nuevo}">
+            <i class="fas fa-plus fa-3x"></i>
+        </a>
+        <a class="card" th:each="mecanico : ${mecanicos}" th:href="'/mecanico/' + ${mecanico.id_mecanico}">
             <div class="img">
                 <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
                 <img alt="imagenCircuito" src="">

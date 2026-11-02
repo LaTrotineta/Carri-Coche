@@ -11,48 +11,51 @@
 
 <header class="header-nav">
     <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
-    <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
+<!--        <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
 </header>
-<form class="detail-card" th:action="@{/coche/guardar}" th:object="${coche}" method="post">
+<form class="detail-card" th:action="@{/mecanico/guardar}" th:object="${mecanico}" method="post">
     <h2 class="detail-title" th:text="${titulo}"></h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
-    <div class="info-group" style="margin-bottom: 20px;">
-        <th:block th:if="${titulo == 'Nueva Coche'}">
-            <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
-            <input  type="text" id="nuevaMatricula"th:field="*{matricula}" class="info-value" required />
+    <div class="info-group">
+        <th:block th:if="${titulo == 'Nuevo Mecanico'}">
+            <label for="nuevaId" class="info-label"><i class="fas fa-id-card"></i> Id</label>
+            <input  type="text" id="nuevaId" th:field="*{id_mecanico}" class="info-value" required />
         </th:block>
-        <th:block th:unless="${titulo == 'Nueva Coche'}">
-            <label for="matricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
-            <input th:unless="${titulo == 'Nueva Coche'}" type="text" id="matricula"th:field="*{matricula}" class="info-value" readonly />
+        <th:block th:unless="${titulo == 'Nuevo Mecanico'}">
+            <label for="id" class="info-label"><i class="fas fa-id-card"></i> Id</label>
+            <input type="number" id="id" th:field="*{id_mecanico}" class="info-value" readonly />
         </th:block>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="marca" class="info-label"><i class="fas fa-industry"></i> Marca</label>
-            <input type="text" id="marca" th:field="*{marca}" class="info-value" required />
+            <label for="nombre" class="info-label"><i class="fas fa-industry"></i> Nombre</label>
+            <input type="text" id="nombre" th:field="*{nombre}" class="info-value" required />
         </div>
         <div class="info-group">
-            <label for="modelo" class="info-label"><i class="fas fa-car-side"></i> Modelo</label>
-            <input type="text" id="modelo" th:field="*{modelo}" class="info-value" required />
+            <label for="especialidad" class="info-label"><i class="fas fa-car-side"></i> Especialidad</label>
+            <input type="text" id="especialidad" th:field="*{especialidad}" class="info-value" required />
         </div>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="potencia" class="info-label"><i class="fas fa-bolt"></i> Potencia</label>
-            <input type="number" step="any" id="potencia" th:field="*{potencia}" class="info-value" required />
+            <label for="experiencia" class="info-label"><i class="fas fa-bolt"></i> Experiencia</label>
+            <input type="number" step="any" id="experiencia" th:field="*{experiencia}" class="info-value" required />
         </div>
         <div class="info-group">
-            <label for="consumo" class="info-label"><i class="fas fa-gas-pump"></i> Consumo</label>
-            <input type="number" step="any" id="consumo" th:field="*{consumo}" class="info-value" required />
+            <label for="tarifaHora" class="info-label"><i class="fas fa-gas-pump"></i> Tarifa Hora</label>
+            <input type="number" step="any" id="tarifaHora" th:field="*{tarifaHora}" class="info-value" required />
         </div>
     </div>
 
     <div class="card-actions">
-        <a class="btn btn-outline" href="/coches" th:if="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
-        <a class="btn btn-outline" th:href="'/coche/' + ${coche.matricula}" th:unless="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" href="/mecanicos" th:if="${titulo == 'Nuevo Mecanico'}"><i class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" th:href="'/mecanico/' + ${mecanico.id_mecanico}" th:unless="${titulo == 'Nuevo Mecanico'}"><i class="fas fa-arrow-left"></i> Volver</a>
+        
+        <a class="btn btn-red" th:href="'/mecanico/borrar/' + ${mecanico.id_mecanico}" th:if="${titulo != 'Nuevo Mecanico'}"><i class="fas fa-trash"></i> Borrar</a>
+
         <button type="submit" class="btn btn-red"><i class="fas fa-save"></i> Guardar</button>
     </div>
 </form>
