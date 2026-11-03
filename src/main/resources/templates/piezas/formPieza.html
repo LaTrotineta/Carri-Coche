@@ -36,7 +36,7 @@
         <div class="info-group">
             <label for="stock" class="info-label"><i class="fas fa-bolt"></i> Stock</label>
             <input type="number" pattern="\d*" min="0" oninput="if(this.value < 0) this.value = 0;"
-                   onkeydown="if(event.key==='-') event.preventDefault();" step="any" id="stock" th:field="*{stock}" class="info-value" required />
+                   onkeydown="if(event.key==='-') event.preventDefault();" step="1" id="stock" th:field="*{stock}" class="info-value" required />
         </div>
         <div class="info-group">
             <label for="precio" class="info-label"><i class="fas fa-gas-pump"></i> Precio</label>
