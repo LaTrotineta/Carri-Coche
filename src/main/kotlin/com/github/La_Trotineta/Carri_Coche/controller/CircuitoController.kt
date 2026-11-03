@@ -82,10 +82,10 @@ class CircuitoController(
 
                 circuito.rutaImagen = "/uploads/$fileName"
             }catch (e: IOException) {
-                circuito.rutaImagen = rutaStatic
+                circuito.rutaImagen = ""
             }
         } else {
-            circuito.rutaImagen = rutaStatic
+            circuito.rutaImagen = ""
         }
         circuitoService.guardar(circuito)
         return "redirect:/circuitos"

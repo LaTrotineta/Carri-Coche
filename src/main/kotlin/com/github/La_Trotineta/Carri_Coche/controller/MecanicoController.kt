@@ -87,10 +87,10 @@ class MecanicoController(
 
                 mecanico.rutaImagen = "/uploads/$fileName"
             }catch (e: IOException) {
-                mecanico.rutaImagen = rutaStatic
+                mecanico.rutaImagen = ""
             }
         } else {
-            mecanico.rutaImagen = rutaStatic
+            mecanico.rutaImagen = ""
         }
         mecanicoServicio.guardar(mecanico)
         return "redirect:/mecanicos"

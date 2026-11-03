@@ -86,10 +86,10 @@ class CocheController(
 
                 coche.rutaImagen = "/uploads/$fileName"
             }catch (e: IOException) {
-                coche.rutaImagen = rutaStatic
+                coche.rutaImagen = ""
             }
         } else {
-            coche.rutaImagen = rutaStatic
+            coche.rutaImagen = ""
         }
         cocheService.guardar(coche)
         return "redirect:/coches"

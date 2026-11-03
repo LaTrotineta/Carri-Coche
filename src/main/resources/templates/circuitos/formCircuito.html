@@ -18,24 +18,18 @@
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
     <div class="info-group" style="margin-bottom: 20px;">
-        <th:block th:if="${titulo == 'Nuevo Circuito'}">
-            <label class="info-label" for="nuevaid_circuito"><i class="fas fa-id-card"></i> Id</label>
-            <input class="info-value" id="nuevaid_circuito" readonly th:field="*{id_circuito}" type="text"/>
-        </th:block>
-        <th:block th:unless="${titulo == 'Nuevo Circuito'}">
-            <label class="info-label" for="id_circuito"><i class="fas fa-id-card"></i> Id</label>
-            <input class="info-value" id="id_circuito" readonly th:field="*{id_circuito}" type="text"/>
-        </th:block>
+        <label class="info-label" for="id_circuito"><i class="fas fa-id-card"></i> Id</label>
+        <input class="info-value" id="id_circuito" readonly th:field="*{id_circuito}" type="text"/>
     </div>
 
     <div class="info-row">
         <div class="info-group">
             <label class="info-label" for="nombre"><i class="fas fa-industry"></i> Nombre</label>
-            <input class="info-value" id="nombre" required th:field="*{nombre}" type="text"/>
+            <input class="info-value" id="nombre" style="text-transform: uppercase;" required th:field="*{nombre}" type="text"/>
         </div>
         <div class="info-group">
             <label class="info-label" for="pais"><i class="fas fa-car-side"></i> Pais</label>
-            <input class="info-value" id="pais" required th:field="*{pais}" type="text"/>
+            <input class="info-value" id="pais" style="text-transform: uppercase;" required th:field="*{pais}" type="text"/>
         </div>
     </div>
 
@@ -48,7 +42,8 @@
         </div>
         <div class="info-group">
             <label class="info-label" for="consumo"><i class="fas fa-gas-pump"></i> Longitud</label>
-            <input class="info-value" id="consumo" required step="any" th:field="*{longitud}" type="number"/>
+            <input class="info-value" id="consumo" min="0" oninput="if(this.value < 0) this.value = 0;"
+                   onkeydown="if(event.key==='-') event.preventDefault();" required step="any" th:field="*{longitud}" type="number"/>
         </div>
     </div>
 

@@ -86,10 +86,10 @@ class PiezaController (
 
                 pieza.rutaImagen = "/uploads/$fileName"
             }catch (e: IOException) {
-                pieza.rutaImagen = rutaStatic
+                pieza.rutaImagen = ""
             }
         } else {
-            pieza.rutaImagen = rutaStatic
+            pieza.rutaImagen = ""
         }
         piezaService.guardar(pieza)
         return "redirect:/piezas"
