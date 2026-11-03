@@ -42,8 +42,8 @@
                 <span class="badge-tag" th:text="${coche.marca}"></span>
             </div>
             <div class="details">
-                <div class="main-text" th:text="'Matricula: ' + ${coche.matricula}"></div>
-                <div class="secundary-text" th:text="'Modelo: ' + ${coche.modelo}"></div>
+                <div class="main-text" th:text="${coche.matricula}"></div>
+                <div class="secundary-text" th:text="${coche.modelo}"></div>
                 <div class="info">
                     <span th:utext="'<i class=\'fas fa-tachometer-alt\'></i> Potencia: ' + ${coche.potencia}"></span>
                     <span th:utext="'<i class=\'fas fa-cog\'></i> Consumo: ' + ${coche.consumo}"></span>

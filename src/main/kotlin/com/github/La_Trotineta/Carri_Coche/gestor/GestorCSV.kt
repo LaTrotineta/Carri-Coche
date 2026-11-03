@@ -34,12 +34,12 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                     filas.mapNotNull { columnas ->
                         if (columnas.size >= 5) {
                             try {
-                                val matricula = columnas[0]
-                                val modelo = columnas[1]
-                                val marca = columnas[2]
+                                val matricula = columnas[0].uppercase()
+                                val modelo = columnas[1].uppercase()
+                                val marca = columnas[2].uppercase()
                                 val potencia = columnas[3].toInt()
                                 val consumo = columnas[4].toDouble()
-                                val rutaImagen = columnas[5]
+                                val rutaImagen = "" // columnas[5]
                                 Coche(matricula, modelo, marca, potencia, consumo, rutaImagen)
                             } catch (ex: Exception) {
                                 null
@@ -55,11 +55,11 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                         if (columnas.size >= 5) {
                             try {
                                 val id_pieza = columnas[0].toInt()
-                                val nombre = columnas[1]
-                                val fabricante = columnas[2]
+                                val nombre = columnas[1].uppercase()
+                                val fabricante = columnas[2].uppercase()
                                 val stock = columnas[3].toInt()
                                 val precio = columnas[4].toDouble()
-                                val rutaImagen = columnas[5]
+                                val rutaImagen = "" //columnas[5]
                                 Pieza(id_pieza, nombre, fabricante, stock, precio, rutaImagen)
                             } catch (ex: Exception) {
                                 null
@@ -75,11 +75,11 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                         if (columnas.size >= 5) {
                             try {
                                 val id_circuito = columnas[0].toInt()
-                                val nombre = columnas[1]
-                                val pais = columnas[2]
+                                val nombre = columnas[1].uppercase()
+                                val pais = columnas[2].uppercase()
                                 val curvas = columnas[3].toInt()
                                 val longitud = columnas[4].toDouble()
-                                val rutaImagen = columnas[5]
+                                val rutaImagen = "" //columnas[5]
                                 Circuito(id_circuito, nombre, pais, curvas, longitud, rutaImagen)
                             } catch (ex: Exception) {
                                 null
@@ -95,11 +95,11 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                         if (columnas.size >= 5) {
                             try {
                                 val id_mecanico = columnas[0].toInt()
-                                val nombre = columnas[1]
-                                val especialidad = columnas[2]
+                                val nombre = columnas[1].uppercase()
+                                val especialidad = columnas[2].uppercase()
                                 val experiencia = columnas[3].toInt()
                                 val tarifaHora = columnas[4].toDouble()
-                                val rutaImagen = columnas[5]
+                                val rutaImagen = "" //columnas[5]
                                 Mecanico(id_mecanico, nombre, especialidad, experiencia, tarifaHora, rutaImagen)
                             } catch (ex: Exception) {
                                 null
@@ -128,9 +128,9 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                 val listaCoches = valores as List<Coche>
                 listaCoches.map { coche ->
                     listOf(
-                        coche.matricula,
-                        coche.modelo,
-                        coche.marca,
+                        coche.matricula.uppercase(),
+                        coche.modelo.uppercase(),
+                        coche.marca.uppercase(),
                         coche.potencia,
                         coche.consumo,
                         coche.rutaImagen
@@ -143,8 +143,8 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                 listaPiezas.map { pieza ->
                     listOf(
                         pieza.id_pieza,
-                        pieza.nombre,
-                        pieza.fabricante,
+                        pieza.nombre.uppercase(),
+                        pieza.fabricante.uppercase(),
                         pieza.stock,
                         pieza.precio,
                         pieza.rutaImagen
@@ -157,8 +157,8 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                 listaCircuitos.map { circuitos ->
                     listOf(
                         circuitos.id_circuito,
-                        circuitos.nombre,
-                        circuitos.pais,
+                        circuitos.nombre.uppercase(),
+                        circuitos.pais.uppercase(),
                         circuitos.curvas,
                         circuitos.longitud,
                         circuitos.rutaImagen
@@ -171,8 +171,8 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                 listaMecanicos.map { mecanico ->
                     listOf(
                         mecanico.id_mecanico,
-                        mecanico.nombre,
-                        mecanico.especialidad,
+                        mecanico.nombre.uppercase(),
+                        mecanico.especialidad.uppercase(),
                         mecanico.experiencia,
                         mecanico.tarifaHora,
                         mecanico.rutaImagen

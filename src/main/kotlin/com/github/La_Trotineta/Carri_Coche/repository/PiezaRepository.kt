@@ -22,12 +22,11 @@ class PiezaRepository(
     fun leerTodasLasPiezas() : List<Pieza> = piezas;
     fun buscarPorID (id : Int) : Pieza? = piezas.find { it.id_pieza == id }
     fun guardarPieza(pieza : Pieza) {
-        val index = pieza.id_pieza
+        val index = piezas.indexOfFirst { it.id_pieza == pieza.id_pieza }
         if (index != -1) {
             piezas[index] = pieza
         } else {
-            val nuevoId = (piezas.maxOfOrNull { it.id_pieza } ?: 0) + 1
-            piezas.add(pieza.copy(id_pieza = nuevoId))
+            piezas.add(pieza.copy(id_pieza = pieza.id_pieza))
         }
         gestor.escribirCSV<Pieza>(piezas)
     }

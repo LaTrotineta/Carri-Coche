@@ -2,63 +2,62 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>La Tritoneta - Detalle del Vehículo</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style/detalles/detalleCoche.css">
+    <link href="/style/detalles/detalleCoche.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="header-nav">
-    <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
+    <a class="logo" href="/">LA <span class="red-text">TRITONETA</span></a>
     <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
 </header>
-<form class="detail-card" th:action="@{/circuito/guardar}" th:object="${circuito}" method="post">
+<form class="detail-card" method="post" th:action="@{/circuito/guardar}" th:object="${circuito}">
     <h2 class="detail-title" th:text="${titulo}"></h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
     <div class="info-group" style="margin-bottom: 20px;">
-        <th:block th:if="${titulo == 'Nuevo Circuito'}">
-            <label for="nuevaid_circuito" class="info-label"><i class="fas fa-id-card"></i> Id</label>
-            <input  type="number" id="nuevaid_circuito"th:field="*{id_circuito}" class="info-value" required />
-        </th:block>
-        <th:block th:unless="${titulo == 'Nuevo Circuito'}">
-            <label for="id_circuito" class="info-label"><i class="fas fa-id-card"></i> Id</label>
-            <input type="text" id="id_circuito" th:field="*{id_circuito}" class="info-value" readonly />
-        </th:block>
+        <label class="info-label" for="id_circuito"><i class="fas fa-id-card"></i> Id</label>
+        <input class="info-value" id="id_circuito" readonly th:field="*{id_circuito}" type="text"/>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="nombre" class="info-label"><i class="fas fa-industry"></i> Nombre</label>
-            <input type="text" id="nombre" th:field="*{nombre}" class="info-value" required />
+            <label class="info-label" for="nombre"><i class="fas fa-industry"></i> Nombre</label>
+            <input class="info-value" id="nombre" style="text-transform: uppercase;" required th:field="*{nombre}" type="text"/>
         </div>
         <div class="info-group">
-            <label for="pais" class="info-label"><i class="fas fa-car-side"></i> Pais</label>
-            <input type="text" id="pais" th:field="*{pais}" class="info-value" required />
+            <label class="info-label" for="pais"><i class="fas fa-car-side"></i> Pais</label>
+            <input class="info-value" id="pais" style="text-transform: uppercase;" required th:field="*{pais}" type="text"/>
         </div>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="curvas" class="info-label"><i class="fas fa-bolt"></i> Curvas</label>
-            <input type="number" pattern="\d*" step="any" id="curvas" th:field="*{curvas}" class="info-value" required />
+            <label class="info-label" for="curvas"><i class="fas fa-bolt"></i> Curvas</label>
+            <input class="info-value" id="curvas" min="0" oninput="if(this.value < 0) this.value = 0;"
+                   onkeydown="if(event.key==='-') event.preventDefault();" pattern="\d*" required step="any"
+                   th:field="*{curvas}" type="number"/>
         </div>
         <div class="info-group">
-            <label for="consumo" class="info-label"><i class="fas fa-gas-pump"></i> Longitud</label>
-            <input type="number" step="any" id="consumo" th:field="*{longitud}" class="info-value" required />
+            <label class="info-label" for="consumo"><i class="fas fa-gas-pump"></i> Longitud</label>
+            <input class="info-value" id="consumo" min="0" oninput="if(this.value < 0) this.value = 0;"
+                   onkeydown="if(event.key==='-') event.preventDefault();" required step="any" th:field="*{longitud}" type="number"/>
         </div>
     </div>
 
-<!--    <div class="info-group">-->
-<!--        <label>Archivo adjunto:</label>-->
-<!--        <input type="file" name="archivoAdjunto" />-->
-<!--    </div>-->
+    <!--    <div class="info-group">-->
+    <!--        <label>Archivo adjunto:</label>-->
+    <!--        <input type="file" name="archivoAdjunto" />-->
+    <!--    </div>-->
 
     <div class="card-actions">
-        <a class="btn btn-outline" href="/circuitos" th:if="${titulo == 'Nuevo Circuito'}"><i class="fas fa-arrow-left"></i> Volver</a>
-        <a class="btn btn-outline" th:href="'/circuito/' + ${circuito.id_circuito}" th:unless="${titulo == 'Nuevo Circuito'}"><i class="fas fa-arrow-left"></i> Volver</a>
-        <button type="submit" class="btn btn-red"><i class="fas fa-save"></i> Guardar</button>
+        <a class="btn btn-outline" href="/circuitos" th:if="${titulo == 'Nuevo Circuito'}"><i
+                class="fas fa-arrow-left"></i> Volver</a>
+        <a class="btn btn-outline" th:href="'/circuito/' + ${circuito.id_circuito}"
+           th:unless="${titulo == 'Nuevo Circuito'}"><i class="fas fa-arrow-left"></i> Volver</a>
+        <button class="btn btn-red" type="submit"><i class="fas fa-save"></i> Guardar</button>
     </div>
 </form>
 </body>

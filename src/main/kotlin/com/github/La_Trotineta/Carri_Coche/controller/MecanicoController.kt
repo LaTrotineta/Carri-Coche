@@ -52,16 +52,14 @@ class MecanicoController(
         return "mecanicos/detalleMecanico"
     }
 
-    // 3. FORMULARIO NUEVO MECANICO (pasa un objeto vacío con ID 0)
     @GetMapping("/mecanico/nuevo")
     fun nuevoMecanico(model: Model): String {
-        val mecanicoVacio = Mecanico(0, "", "", 0, 0.0, rutaStatic)
+        val mecanicoVacio = Mecanico(mecanicoServicio.listar().last().id_mecanico+1, "", "", 0, 0.0, rutaStatic)
         model.addAttribute("mecanico", mecanicoVacio)
         model.addAttribute("titulo", "Nuevo Mecanico")
         return "mecanicos/formMecanico"
     }
 
-    // 4. FORMULARIO EDITAR MECANICO (pasa el objeto existente)
     @GetMapping("/mecanico/editar/{id_mecanico}")
     fun editarMecanico(@PathVariable id_mecanico: Int, model: Model): String {
         val mecanico = mecanicoServicio.buscar(id_mecanico) ?: return "redirect:/mecanicos"
@@ -89,10 +87,10 @@ class MecanicoController(
 
                 mecanico.rutaImagen = "/uploads/$fileName"
             }catch (e: IOException) {
-                mecanico.rutaImagen = rutaStatic
+                mecanico.rutaImagen = ""
             }
         } else {
-            mecanico.rutaImagen = rutaStatic
+            mecanico.rutaImagen = ""
         }
         mecanicoServicio.guardar(mecanico)
         return "redirect:/mecanicos"

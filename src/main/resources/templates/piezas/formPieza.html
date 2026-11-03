@@ -17,35 +17,31 @@
     <h2 class="detail-title" th:text="${titulo}"></h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
     <div class="info-group" style="margin-bottom: 20px;">
-        <th:block th:if="${titulo == 'Nueva Pieza'}">
-            <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> ID</label>
-            <input  type="number" id="nuevaMatricula"th:field="*{id_pieza}" class="info-value" required />
-        </th:block>
-        <th:block th:unless="${titulo == 'Nueva Pieza'}">
-            <label for="id_pieza" class="info-label"><i class="fas fa-id-card"></i> ID</label>
-            <input th:unless="${titulo == 'Nueva Pieza'}" type="text" id="id_pieza" th:field="*{id_pieza}" class="info-value" readonly />
-        </th:block>
+        <label for="id_pieza" class="info-label"><i class="fas fa-id-card"></i> ID</label>
+        <input type="text" id="id_pieza" th:field="*{id_pieza}" class="info-value" readonly />
     </div>
 
     <div class="info-row">
         <div class="info-group">
             <label for="nombre" class="info-label"><i class="fas fa-industry"></i> Nombre</label>
-            <input type="text" id="nombre" th:field="*{nombre}" class="info-value" required />
+            <input type="text" id="nombre" style="text-transform: uppercase;" th:field="*{nombre}" class="info-value" required />
         </div>
         <div class="info-group">
             <label for="fabricante" class="info-label"><i class="fas fa-car-side"></i> Fabricante</label>
-            <input type="text" id="fabricante" th:field="*{fabricante}" class="info-value" required />
+            <input type="text" id="fabricante" style="text-transform: uppercase;" th:field="*{fabricante}" class="info-value" required />
         </div>
     </div>
 
     <div class="info-row">
         <div class="info-group">
             <label for="stock" class="info-label"><i class="fas fa-bolt"></i> Stock</label>
-            <input type="number" pattern="\d*" step="any" id="stock" th:field="*{stock}" class="info-value" required />
+            <input type="number" pattern="\d*" min="0" oninput="if(this.value < 0) this.value = 0;"
+                   onkeydown="if(event.key==='-') event.preventDefault();" step="any" id="stock" th:field="*{stock}" class="info-value" required />
         </div>
         <div class="info-group">
             <label for="precio" class="info-label"><i class="fas fa-gas-pump"></i> Precio</label>
-            <input type="number" step="any" id="precio" th:field="*{precio}" class="info-value" required />
+            <input type="number" step="any" min="0" oninput="if(this.value < 0) this.value = 0;"
+                   onkeydown="if(event.key==='-') event.preventDefault();" id="precio" th:field="*{precio}" class="info-value" required />
         </div>
     </div>
 

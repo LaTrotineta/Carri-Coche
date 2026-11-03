@@ -54,7 +54,7 @@ class PiezaController (
 
     @GetMapping("/pieza/nuevo")
     fun nuevaPieza(model: Model): String {
-        val piezaVacia = Pieza(0, "", "", 0, 0.0, rutaStatic)
+        val piezaVacia = Pieza(piezaService.listar().last().id_pieza+1, "", "", 0, 0.0, rutaStatic)
         model.addAttribute("pieza", piezaVacia)
         model.addAttribute("titulo", "Nueva Pieza")
         return "piezas/formPieza"
@@ -86,10 +86,10 @@ class PiezaController (
 
                 pieza.rutaImagen = "/uploads/$fileName"
             }catch (e: IOException) {
-                pieza.rutaImagen = rutaStatic
+                pieza.rutaImagen = ""
             }
         } else {
-            pieza.rutaImagen = rutaStatic
+            pieza.rutaImagen = ""
         }
         piezaService.guardar(pieza)
         return "redirect:/piezas"

@@ -2,9 +2,9 @@ package com.github.La_Trotineta.Carri_Coche.model
 
 /**
  * @author Junfeng
+ * Entidad: Coche
  *
- * Dataclass de Coches
- * @param matricula
+ *  @param matricula
  * @param modelo
  * @param marca
  * @param potencia
@@ -16,5 +16,5 @@ data class Coche(
     var marca: String,
     var potencia: Int,
     var consumo: Double,
-    var rutaImagen: String  = "img/coches.jpg"
+    var rutaImagen: String  = ""
 )

@@ -48,7 +48,7 @@ class CircuitoController(
     // 3. FORMULARIO NUEVA PLANTA (pasa un objeto vacío con ID 0)
     @GetMapping("/circuito/nuevo")
     fun nuevoCircuito(model: Model): String {
-        val circuitoVacia = Circuito(0, "", "", 0, 0.0, rutaStatic)
+        val circuitoVacia = Circuito(circuitoService.listar().last().id_circuito+1, "", "", 0, 0.0, rutaStatic)
         model.addAttribute("circuito", circuitoVacia)
         model.addAttribute("titulo", "Nuevo Circuito")
         return "circuitos/formCircuito"
@@ -82,10 +82,10 @@ class CircuitoController(
 
                 circuito.rutaImagen = "/uploads/$fileName"
             }catch (e: IOException) {
-                circuito.rutaImagen = rutaStatic
+                circuito.rutaImagen = ""
             }
         } else {
-            circuito.rutaImagen = rutaStatic
+            circuito.rutaImagen = ""
         }
         circuitoService.guardar(circuito)
         return "redirect:/circuitos"
