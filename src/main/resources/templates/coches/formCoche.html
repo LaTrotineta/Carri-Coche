@@ -49,12 +49,12 @@
         <div class="info-group">
             <label class="info-label" for="potencia"><i class="fas fa-bolt"></i> Potencia</label>
             <input class="info-value" id="potencia" min="0" oninput="if(this.value < 0) this.value = 0;"
-                   onkeydown="if(event.key==='-') event.preventDefault();" pattern="\d*" required step="any" th:field="*{potencia}"
+                   onkeydown="if(event.key==='-') event.preventDefault();" pattern="\d*" required step="1" th:field="*{potencia}"
                    type="number"/>
         </div>
         <div class="info-group">
             <label class="info-label" for="consumo"><i class="fas fa-gas-pump"></i> Consumo</label>
-            <input class="info-value" id="consumo" min="0" oninput="if(this.value < 0) this.value = 0;"
+            <input class="info-value" id="consumo"  min="0" oninput="if(this.value < 0) this.value = 0;"
                    onkeydown="if(event.key==='-') event.preventDefault();" required step="any" th:field="*{consumo}" type="number"/>
         </div>
     </div>
