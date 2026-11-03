@@ -22,7 +22,7 @@ class PiezaRepository(
     fun leerTodasLasPiezas() : List<Pieza> = piezas;
     fun buscarPorID (id : Int) : Pieza? = piezas.find { it.id_pieza == id }
     fun guardarPieza(pieza : Pieza) {
-        val index = piezas.indexOfFirst { it.id_pieza == pieza.id_pieza }
+        val index = pieza.id_pieza
         if (index != -1) {
             piezas[index] = pieza
         } else {

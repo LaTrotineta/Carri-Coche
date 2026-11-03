@@ -41,13 +41,18 @@
     <div class="info-row">
         <div class="info-group">
             <label for="stock" class="info-label"><i class="fas fa-bolt"></i> Stock</label>
-            <input type="number" step="any" id="stock" th:field="*{stock}" class="info-value" required />
+            <input type="number" pattern="\d*" step="any" id="stock" th:field="*{stock}" class="info-value" required />
         </div>
         <div class="info-group">
             <label for="precio" class="info-label"><i class="fas fa-gas-pump"></i> Precio</label>
             <input type="number" step="any" id="precio" th:field="*{precio}" class="info-value" required />
         </div>
     </div>
+
+<!--    <div class="info-group">-->
+<!--        <label>Archivo adjunto:</label>-->
+<!--        <input type="file" name="archivoAdjunto" />-->
+<!--    </div>-->
 
     <div class="card-actions">
         <a class="btn btn-outline" href="/piezas" th:if="${titulo == 'Nueva Pieza'}"><i class="fas fa-arrow-left"></i> Volver</a>

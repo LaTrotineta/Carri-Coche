@@ -9,5 +9,6 @@ data class Pieza(
     var nombre: String,
     var fabricante: String,
     var stock: Int,
-    var precio: Double
+    var precio: Double,
+    var rutaImagen: String = "img/motor.jpeg"
 )

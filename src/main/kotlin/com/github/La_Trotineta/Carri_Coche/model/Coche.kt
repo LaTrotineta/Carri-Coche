@@ -15,5 +15,6 @@ data class Coche(
     var modelo: String,
     var marca: String,
     var potencia: Int,
-    var consumo: Double
+    var consumo: Double,
+    var rutaImagen: String  = "img/coches.jpg"
 )

@@ -3,6 +3,7 @@ package com.github.La_Trotineta.Carri_Coche.controller
 import com.github.La_Trotineta.Carri_Coche.model.Pieza
 import com.github.La_Trotineta.Carri_Coche.service.PiezaService
 import jakarta.websocket.server.PathParam
+import org.springframework.core.io.ResourceLoader
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -10,6 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.multipart.MultipartFile
+import java.io.File
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
 
 /**
  * @author Santiago Gonzalez Quijada
@@ -17,7 +24,13 @@ import org.springframework.web.bind.annotation.RequestParam
  */
 
 @Controller
-class PiezaController (private val piezaService : PiezaService) {
+class PiezaController (
+    private val piezaService : PiezaService,
+    private val resourceLoader: ResourceLoader
+) {
+
+    private val rutaStatic = "img/circuito.jpg"
+
     @GetMapping("/piezas")
     fun listarPiezas(@RequestParam(name = "fabricante", required = false) fabricante: String?, model: Model): String {
         val listaPiezas = piezaService.listar();
@@ -41,7 +54,7 @@ class PiezaController (private val piezaService : PiezaService) {
 
     @GetMapping("/pieza/nuevo")
     fun nuevaPieza(model: Model): String {
-        val piezaVacia = Pieza(0, "", "", 0, 0.0)
+        val piezaVacia = Pieza(0, "", "", 0, 0.0, rutaStatic)
         model.addAttribute("pieza", piezaVacia)
         model.addAttribute("titulo", "Nueva Pieza")
         return "piezas/formPieza"
@@ -56,7 +69,28 @@ class PiezaController (private val piezaService : PiezaService) {
     }
 
     @PostMapping("/pieza/guardar")
-    fun guardarPieza(@ModelAttribute pieza: Pieza): String {
+    fun guardarPieza(@ModelAttribute pieza: Pieza, @RequestParam("archivoAdjunto") file: MultipartFile?): String {
+        if (file != null) {
+            try {
+                val uploadDir = resourceLoader.getResource("classpath:static/uploads/piezas/").file.absolutePath
+
+                val directory = File(uploadDir)
+                if (!directory.exists()) {
+                    directory.mkdirs()
+                }
+
+                val fileName = file.originalFilename
+
+                val destinationPath = Paths.get(uploadDir, fileName)
+                Files.copy(file.inputStream, destinationPath, StandardCopyOption.REPLACE_EXISTING)
+
+                pieza.rutaImagen = "/uploads/$fileName"
+            }catch (e: IOException) {
+                pieza.rutaImagen = rutaStatic
+            }
+        } else {
+            pieza.rutaImagen = rutaStatic
+        }
         piezaService.guardar(pieza)
         return "redirect:/piezas"
     }

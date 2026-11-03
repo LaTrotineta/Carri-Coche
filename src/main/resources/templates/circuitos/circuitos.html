@@ -36,7 +36,7 @@
 
         <a class="card" th:each="circuito : ${circuitos}" th:href="'/circuito/' + ${circuito.id_circuito}">
             <div class="img">
-                <img alt="imagenCircuito" src="">
+                <img alt="imagenCircuito" th:src="${circuito.rutaImagen != ''} ? @{${circuito.rutaImagen}} : @{img/circuito.jpeg}">
                 <span class="badge-tag" th:text="${circuito.pais}"></span>
             </div>
             <div class="details">

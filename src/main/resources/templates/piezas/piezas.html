@@ -38,8 +38,7 @@
 
         <a class="card" th:each="pieza : ${piezas}" th:href="'/pieza/' + ${pieza.id_pieza}">
             <div class="img">
-                <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                <img alt="imagenCircuito" src="">
+                <img alt="imagenCircuito" th:src="${pieza.rutaImagen != ''} ? @{${pieza.rutaImagen}} : @{img/motor.jpg}">
                 <span class="badge-tag" th:text="${pieza.fabricante}"></span>
             </div>
             <div class="details">

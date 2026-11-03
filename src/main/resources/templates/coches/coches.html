@@ -38,7 +38,7 @@
 
         <a class="card" th:each="coche : ${coches}" th:href="'/coche/' + ${coche.matricula}">
             <div class="img">
-                <img alt="imagenCoche" src="">
+                <img alt="imagenCoche" th:src="${coche.rutaImagen != ''} ? @{${coche.rutaImagen}} : @{img/coches.jpg}">
                 <span class="badge-tag" th:text="${coche.marca}"></span>
             </div>
             <div class="details">

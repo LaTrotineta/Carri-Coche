@@ -112,6 +112,11 @@ body {
     justify-content: center;
 }
 
+.img img{
+    height: 100%;
+    width: 100%;
+}
+
 .badge-tag {
     position: absolute;
     top: 10px;

@@ -35,7 +35,7 @@
         </a>
         <a class="card" th:each="mecanico : ${mecanicos}" th:href="'/mecanico/' + ${mecanico.id_mecanico}">
             <div class="img">
-                <img alt="imagenCircuito" src="">
+                <img alt="imagenCircuito" th:src="${mecanico.rutaImagen != ''} ? @{${mecanico.rutaImagen}} : @{img/mecanico.jpg}">
                 <span class="badge-tag" th:text="${mecanico.especialidad}"></span>
             </div>
             <div class="details">

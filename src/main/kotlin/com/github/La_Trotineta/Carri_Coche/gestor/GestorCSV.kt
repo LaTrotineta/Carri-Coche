@@ -39,7 +39,8 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                                 val marca = columnas[2]
                                 val potencia = columnas[3].toInt()
                                 val consumo = columnas[4].toDouble()
-                                Coche(matricula, modelo, marca, potencia, consumo)
+                                val rutaImagen = columnas[5]
+                                Coche(matricula, modelo, marca, potencia, consumo, rutaImagen)
                             } catch (ex: Exception) {
                                 null
                             }
@@ -58,7 +59,8 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                                 val fabricante = columnas[2]
                                 val stock = columnas[3].toInt()
                                 val precio = columnas[4].toDouble()
-                                Pieza(id_pieza, nombre, fabricante, stock, precio)
+                                val rutaImagen = columnas[5]
+                                Pieza(id_pieza, nombre, fabricante, stock, precio, rutaImagen)
                             } catch (ex: Exception) {
                                 null
                             }
@@ -77,7 +79,8 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                                 val pais = columnas[2]
                                 val curvas = columnas[3].toInt()
                                 val longitud = columnas[4].toDouble()
-                                Circuito(id_circuito, nombre, pais, curvas, longitud)
+                                val rutaImagen = columnas[5]
+                                Circuito(id_circuito, nombre, pais, curvas, longitud, rutaImagen)
                             } catch (ex: Exception) {
                                 null
                             }
@@ -96,7 +99,8 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                                 val especialidad = columnas[2]
                                 val experiencia = columnas[3].toInt()
                                 val tarifaHora = columnas[4].toDouble()
-                                Mecanico(id_mecanico, nombre, especialidad, experiencia, tarifaHora)
+                                val rutaImagen = columnas[5]
+                                Mecanico(id_mecanico, nombre, especialidad, experiencia, tarifaHora, rutaImagen)
                             } catch (ex: Exception) {
                                 null
                             }
@@ -128,46 +132,50 @@ class GestorCSV(val path: Path, val delimiterCSV: Char = ';') {
                         coche.modelo,
                         coche.marca,
                         coche.potencia,
-                        coche.consumo
+                        coche.consumo,
+                        coche.rutaImagen
                     )
                 }
             }
 
             Pieza::class -> {
                 val listaPiezas = valores as List<Pieza>
-                listaPiezas.map { coche ->
+                listaPiezas.map { pieza ->
                     listOf(
-                        coche.id_pieza,
-                        coche.nombre,
-                        coche.fabricante,
-                        coche.stock,
-                        coche.precio
+                        pieza.id_pieza,
+                        pieza.nombre,
+                        pieza.fabricante,
+                        pieza.stock,
+                        pieza.precio,
+                        pieza.rutaImagen
                     )
                 }
             }
 
             Circuito::class -> {
-                val listaPiezas = valores as List<Circuito>
-                listaPiezas.map { coche ->
+                val listaCircuitos = valores as List<Circuito>
+                listaCircuitos.map { circuitos ->
                     listOf(
-                        coche.id_circuito,
-                        coche.nombre,
-                        coche.pais,
-                        coche.curvas,
-                        coche.longitud
+                        circuitos.id_circuito,
+                        circuitos.nombre,
+                        circuitos.pais,
+                        circuitos.curvas,
+                        circuitos.longitud,
+                        circuitos.rutaImagen
                     )
                 }
             }
 
             Mecanico::class -> {
-                val listaPiezas = valores as List<Mecanico>
-                listaPiezas.map { coche ->
+                val listaMecanicos = valores as List<Mecanico>
+                listaMecanicos.map { mecanico ->
                     listOf(
-                        coche.id_mecanico,
-                        coche.nombre,
-                        coche.especialidad,
-                        coche.experiencia,
-                        coche.tarifaHora
+                        mecanico.id_mecanico,
+                        mecanico.nombre,
+                        mecanico.especialidad,
+                        mecanico.experiencia,
+                        mecanico.tarifaHora,
+                        mecanico.rutaImagen
                     )
                 }
             }
