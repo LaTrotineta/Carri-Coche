@@ -24,12 +24,11 @@ class CircuitoRepository(
     fun buscarPorID(id: Int): Circuito? = circuitos.find { it.id_circuito == id }
 
     fun guardarCircuito(circuito: Circuito) {
-        val index = circuito.id_circuito
-        if (circuito.id_circuito != -1) {
-            circuitos[index] = circuito
+        val index = circuitos.indexOfFirst { it.id_circuito == circuito.id_circuito }
+        if (index != -1) {
+            circuitos[circuito.id_circuito] = circuito
         } else {
-            val nuevoId = (circuitos.maxOfOrNull { it.id_circuito } ?: 0) + 1
-            circuitos.add(circuito.copy(id_circuito = nuevoId))
+            circuitos.add(circuito.copy(id_circuito = circuito.id_circuito))
         }
         gestor.escribirCSV<Circuito>(circuitos)
     }

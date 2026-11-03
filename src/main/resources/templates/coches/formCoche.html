@@ -2,63 +2,72 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>La Tritoneta - Detalle del Vehículo</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style/detalles/detalleCoche.css">
+    <link href="/style/detalles/detalleCoche.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="header-nav">
-    <a href="/" class="logo">LA <span class="red-text">TRITONETA</span></a>
+    <a class="logo" href="/">LA <span class="red-text">TRITONETA</span></a>
     <!--    <a href="/coches" class="btn-link"><i class="fas fa-arrow-left"></i> Volver</a>-->
 </header>
-<form class="detail-card" th:action="@{/coche/guardar}" th:object="${coche}" method="post">
+<form class="detail-card" method="post" th:action="@{/coche/guardar}" th:object="${coche}">
     <h2 class="detail-title" th:text="${titulo}"></h2>
     <p class="detail-subtitle">Especificaciones técnicas del sistema de La Tritoneta.</p>
 
     <div class="info-group">
         <th:block th:if="${titulo == 'Nueva Coche'}">
-            <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
-            <input  type="text" id="nuevaMatricula" th:field="*{matricula}" class="info-value" required />
+            <label class="info-label" for="nuevaMatricula"><i class="fas fa-id-card"></i> Matrícula</label>
+            <input class="info-value" id="nuevaMatricula"
+                   pattern="^\d{4}\s?[A-Za-z]{3}$"
+                   required
+                   th:field="*{matricula}"
+                   title="Debe introducir un formato de matrícula válido (ej: 1234ABC o 1234 ABC)"
+                   style="text-transform: uppercase;"
+                   type="text"/>
         </th:block>
         <th:block th:unless="${titulo == 'Nueva Coche'}">
-            <label for="matricula" class="info-label"><i class="fas fa-id-card"></i> Matrícula</label>
-            <input type="text" id="matricula" th:field="*{matricula}" class="info-value" readonly />
+            <label class="info-label" for="matricula"><i class="fas fa-id-card"></i> Matrícula</label>
+            <input class="info-value" id="matricula" style="text-transform: uppercase;" readonly th:field="*{matricula}" type="text"/>
         </th:block>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="marca" class="info-label"><i class="fas fa-industry"></i> Marca</label>
-            <input type="text" id="marca" th:field="*{marca}" class="info-value" required />
+            <label class="info-label" for="marca"><i class="fas fa-industry"></i> Marca</label>
+            <input class="info-value" id="marca" style="text-transform: uppercase;" required th:field="*{marca}" type="text"/>
         </div>
         <div class="info-group">
-            <label for="modelo" class="info-label"><i class="fas fa-car-side"></i> Modelo</label>
-            <input type="text" id="modelo" th:field="*{modelo}" class="info-value" required />
+            <label class="info-label" for="modelo"><i class="fas fa-car-side"></i> Modelo</label>
+            <input class="info-value" id="modelo" style="text-transform: uppercase;" required th:field="*{modelo}" type="text"/>
         </div>
     </div>
 
     <div class="info-row">
         <div class="info-group">
-            <label for="potencia" class="info-label"><i class="fas fa-bolt"></i> Potencia</label>
-            <input type="number" pattern="\d*" step="any" id="potencia" th:field="*{potencia}" class="info-value" required />
+            <label class="info-label" for="potencia"><i class="fas fa-bolt"></i> Potencia</label>
+            <input class="info-value" id="potencia" pattern="\d*" required step="any" th:field="*{potencia}"
+                   type="number"/>
         </div>
         <div class="info-group">
-            <label for="consumo" class="info-label"><i class="fas fa-gas-pump"></i> Consumo</label>
-            <input type="number" step="any" id="consumo" th:field="*{consumo}" class="info-value" required />
+            <label class="info-label" for="consumo"><i class="fas fa-gas-pump"></i> Consumo</label>
+            <input class="info-value" id="consumo" required step="any" th:field="*{consumo}" type="number"/>
         </div>
     </div>
 
-<!--    <div class="info-group">-->
-<!--        <label>Archivo adjunto:</label>-->
-<!--        <input type="file" name="archivoAdjunto" />-->
-<!--    </div>-->
+    <!--    <div class="info-group">-->
+    <!--        <label>Archivo adjunto:</label>-->
+    <!--        <input type="file" name="archivoAdjunto" />-->
+    <!--    </div>-->
 
     <div class="card-actions">
-        <a class="btn btn-outline" href="/coches" th:if="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
-        <a class="btn btn-outline" th:href="'/coche/' + ${coche.matricula}" th:unless="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>
-        <button type="submit" class="btn btn-red"><i class="fas fa-save"></i> Guardar</button>
+        <a class="btn btn-outline" href="/coches" th:if="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i>
+            Volver</a>
+        <a class="btn btn-outline" th:href="'/coche/' + ${coche.matricula}" th:unless="${titulo == 'Nueva Coche'}"><i
+                class="fas fa-arrow-left"></i> Volver</a>
+        <button class="btn btn-red" type="submit"><i class="fas fa-save"></i> Guardar</button>
     </div>
 </form>
 </body>

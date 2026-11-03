@@ -26,8 +26,7 @@ class PiezaRepository(
         if (index != -1) {
             piezas[index] = pieza
         } else {
-            val nuevoId = (piezas.maxOfOrNull { it.id_pieza } ?: 0) + 1
-            piezas.add(pieza.copy(id_pieza = nuevoId))
+            piezas.add(pieza.copy(id_pieza = pieza.id_pieza))
         }
         gestor.escribirCSV<Pieza>(piezas)
     }

@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Junfeng
- *
- * Servicio coche
+ * Entidad: Coche
  */
 @Service
 class CocheService(private val repository: CocheRepository) {

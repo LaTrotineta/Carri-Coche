@@ -30,8 +30,7 @@ class MecanicoRepository(
         if (index != -1) {
             mecanicos[index] = mecanico
         } else {
-            val nuevoId = (mecanicos.maxOfOrNull { it.id_mecanico } ?: 0) + 1
-            mecanicos.add(mecanico.copy(id_mecanico = nuevoId))
+            mecanicos.add(mecanico.copy(id_mecanico = mecanico.id_mecanico))
         }
         gestor.escribirCSV<Mecanico>(mecanicos)
     }

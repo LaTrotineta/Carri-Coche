@@ -10,5 +10,5 @@ data class Circuito(
     var pais :String,
     var curvas :Int,
     var longitud: Double,
-    var rutaImagen: String = "img/circuito.jpeg"
+    var rutaImagen: String = ""
 )

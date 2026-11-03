@@ -20,8 +20,7 @@ import java.nio.file.StandardCopyOption
 
 /**
  * @author Junfeng
- *
- * Controllador de Coche
+ * Entidad: Coche
  */
 @Controller
 class CocheController(

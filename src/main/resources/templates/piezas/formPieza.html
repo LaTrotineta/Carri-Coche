@@ -19,7 +19,7 @@
     <div class="info-group" style="margin-bottom: 20px;">
         <th:block th:if="${titulo == 'Nueva Pieza'}">
             <label for="nuevaMatricula" class="info-label"><i class="fas fa-id-card"></i> ID</label>
-            <input  type="number" id="nuevaMatricula"th:field="*{id_pieza}" class="info-value" required />
+            <input  type="number" id="nuevaMatricula"th:field="*{id_pieza}" class="info-value" readonly />
         </th:block>
         <th:block th:unless="${titulo == 'Nueva Pieza'}">
             <label for="id_pieza" class="info-label"><i class="fas fa-id-card"></i> ID</label>
@@ -30,11 +30,11 @@
     <div class="info-row">
         <div class="info-group">
             <label for="nombre" class="info-label"><i class="fas fa-industry"></i> Nombre</label>
-            <input type="text" id="nombre" th:field="*{nombre}" class="info-value" required />
+            <input type="text" id="nombre" style="text-transform: uppercase;" th:field="*{nombre}" class="info-value" required />
         </div>
         <div class="info-group">
             <label for="fabricante" class="info-label"><i class="fas fa-car-side"></i> Fabricante</label>
-            <input type="text" id="fabricante" th:field="*{fabricante}" class="info-value" required />
+            <input type="text" id="fabricante" style="text-transform: uppercase;" th:field="*{fabricante}" class="info-value" required />
         </div>
     </div>
 
