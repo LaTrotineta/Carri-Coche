@@ -2,9 +2,16 @@ package com.github.La_Trotineta.Carri_Coche.controller
 
 import com.github.La_Trotineta.Carri_Coche.model.Mecanico
 import com.github.La_Trotineta.Carri_Coche.service.MecanicoServicio
+import org.springframework.core.io.ResourceLoader
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
+import java.io.File
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
 
 
 /**
@@ -16,12 +23,24 @@ import org.springframework.web.bind.annotation.*
 
 
 @Controller
-class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
+class MecanicoController(
+    private val mecanicoServicio: MecanicoServicio,
+    private val resourceLoader: ResourceLoader
+) {
 
-    // 1. LISTAR
+    private val rutaStatic = "img/circuito.jpg"
+
+
     @GetMapping("/mecanicos")
-    fun listarMecanicos(model: Model): String {
-        model.addAttribute("mecanicos", mecanicoServicio.listar())
+    fun listarMecanicos(@RequestParam(name = "especialidad", required = false) especialidad:String?, model: Model): String {
+        val listaMecanicos = mecanicoServicio.listar()
+        val valores = when {
+            especialidad != null && especialidad != "" -> listaMecanicos.filter { it.especialidad == especialidad }
+            else -> listaMecanicos
+        }
+        model.addAttribute("listamecanicos", listaMecanicos)
+        model.addAttribute("mecanicos", valores)
+        model.addAttribute("especialidad", especialidad)
         return "mecanicos/mecanicos"
     }
 
@@ -36,7 +55,7 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
     // 3. FORMULARIO NUEVO MECANICO (pasa un objeto vacío con ID 0)
     @GetMapping("/mecanico/nuevo")
     fun nuevoMecanico(model: Model): String {
-        val mecanicoVacio = Mecanico(0, "", "", 0, 0.0)
+        val mecanicoVacio = Mecanico(0, "", "", 0, 0.0, rutaStatic)
         model.addAttribute("mecanico", mecanicoVacio)
         model.addAttribute("titulo", "Nuevo Mecanico")
         return "mecanicos/formMecanico"
@@ -53,7 +72,28 @@ class MecanicoController(private val mecanicoServicio: MecanicoServicio) {
 
     // 5. PROCESAR GUARDADO (Sirve tanto para crear como para editar)
     @PostMapping("/mecanico/guardar")
-    fun guardarMecanico(@ModelAttribute mecanico: Mecanico): String {
+    fun guardarMecanico(@ModelAttribute mecanico: Mecanico, @RequestParam("archivoAdjunto") file: MultipartFile?): String {
+        if (file != null) {
+            try {
+                val uploadDir = resourceLoader.getResource("classpath:static/uploads/mecanicos/").file.absolutePath
+
+                val directory = File(uploadDir)
+                if (!directory.exists()) {
+                    directory.mkdirs()
+                }
+
+                val fileName = file.originalFilename
+
+                val destinationPath = Paths.get(uploadDir, fileName)
+                Files.copy(file.inputStream, destinationPath, StandardCopyOption.REPLACE_EXISTING)
+
+                mecanico.rutaImagen = "/uploads/$fileName"
+            }catch (e: IOException) {
+                mecanico.rutaImagen = rutaStatic
+            }
+        } else {
+            mecanico.rutaImagen = rutaStatic
+        }
         mecanicoServicio.guardar(mecanico)
         return "redirect:/mecanicos"
     }

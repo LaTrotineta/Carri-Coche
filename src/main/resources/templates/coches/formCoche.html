@@ -42,13 +42,18 @@
     <div class="info-row">
         <div class="info-group">
             <label for="potencia" class="info-label"><i class="fas fa-bolt"></i> Potencia</label>
-            <input type="number" step="any" id="potencia" th:field="*{potencia}" class="info-value" required />
+            <input type="number" pattern="\d*" step="any" id="potencia" th:field="*{potencia}" class="info-value" required />
         </div>
         <div class="info-group">
             <label for="consumo" class="info-label"><i class="fas fa-gas-pump"></i> Consumo</label>
             <input type="number" step="any" id="consumo" th:field="*{consumo}" class="info-value" required />
         </div>
     </div>
+
+<!--    <div class="info-group">-->
+<!--        <label>Archivo adjunto:</label>-->
+<!--        <input type="file" name="archivoAdjunto" />-->
+<!--    </div>-->
 
     <div class="card-actions">
         <a class="btn btn-outline" href="/coches" th:if="${titulo == 'Nueva Coche'}"><i class="fas fa-arrow-left"></i> Volver</a>

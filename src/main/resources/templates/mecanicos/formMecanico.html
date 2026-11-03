@@ -42,13 +42,18 @@
     <div class="info-row">
         <div class="info-group">
             <label for="experiencia" class="info-label"><i class="fas fa-bolt"></i> Experiencia</label>
-            <input type="number" step="any" id="experiencia" th:field="*{experiencia}" class="info-value" required />
+            <input type="number" pattern="\d*" step="any" id="experiencia" th:field="*{experiencia}" class="info-value" required />
         </div>
         <div class="info-group">
             <label for="tarifaHora" class="info-label"><i class="fas fa-gas-pump"></i> Tarifa Hora</label>
             <input type="number" step="any" id="tarifaHora" th:field="*{tarifaHora}" class="info-value" required />
         </div>
     </div>
+
+<!--    <div class="info-group">-->
+<!--        <label>Archivo adjunto:</label>-->
+<!--        <input type="file" name="archivoAdjunto" />-->
+<!--    </div>-->
 
     <div class="card-actions">
         <a class="btn btn-outline" href="/mecanicos" th:if="${titulo == 'Nuevo Mecanico'}"><i class="fas fa-arrow-left"></i> Volver</a>

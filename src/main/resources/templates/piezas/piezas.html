@@ -22,9 +22,9 @@
         <div class="filter-group">
             <label>Pieza</label>
             <label>
-                <select name="pieza" onchange="this.form.submit()">
-                    <option value="" th:selected="${fabricante == null && fabricante == ''}">Todos</option>
-                    <option th:each="pieza : ${listaPiezas}" th:value="${pieza.fabricante}" th:text="${pieza.fabricante}" th:selected="${pieza != null && fabricante == pieza.fabricante}"></option>
+                <select name="fabricante" onchange="this.form.submit()">
+                    <option value="" th:selected="${fabricante == null || fabricante == ''}">Todos</option>
+                    <option th:each="pieza : ${listaPiezas}" th:value="${pieza.fabricante}" th:text="${pieza.fabricante}" th:selected="${fabricante != null && fabricante == pieza.fabricante}"></option>
                 </select>
             </label>
         </div>
@@ -38,8 +38,7 @@
 
         <a class="card" th:each="pieza : ${piezas}" th:href="'/pieza/' + ${pieza.id_pieza}">
             <div class="img">
-                <!--                    <i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                <img alt="imagenCircuito" src="">
+                <img alt="imagenCircuito" th:src="${pieza.rutaImagen != ''} ? @{${pieza.rutaImagen}} : @{img/motor.jpg}">
                 <span class="badge-tag" th:text="${pieza.fabricante}"></span>
             </div>
             <div class="details">

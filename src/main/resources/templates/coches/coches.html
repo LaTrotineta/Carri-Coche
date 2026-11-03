@@ -20,14 +20,10 @@
             <i class="fas fa-filter"> </i> Filtros
         </div>
         <div class="filter-group">
-<!--            <label>Buscar</label>-->
-<!--            <label>-->
-<!--                <input name="buscar" onchange="this.form.submit()">-->
-<!--            </label>-->
             <label>Marca</label>
             <label>
                 <select name="marca" onchange="this.form.submit()">
-                    <option value="" th:selected="${marca == null && marca == ''}">Todos</option>
+                    <option value="" th:selected="${marca == null || marca == ''}">Todos</option>
                     <option th:each="coche : ${listaCoches}" th:value="${coche.marca}" th:text="${coche.marca}" th:selected="${marca != null && marca == coche.marca}"></option>
                 </select>
             </label>
@@ -42,8 +38,7 @@
 
         <a class="card" th:each="coche : ${coches}" th:href="'/coche/' + ${coche.matricula}">
             <div class="img">
-                <!--<i class="fas fa-car fa-3x" style="color: #374151;"></i>-->
-                <img alt="imagenCoche" src="">
+                <img alt="imagenCoche" th:src="${coche.rutaImagen != ''} ? @{${coche.rutaImagen}} : @{img/coches.jpg}">
                 <span class="badge-tag" th:text="${coche.marca}"></span>
             </div>
             <div class="details">

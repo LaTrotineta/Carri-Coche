@@ -12,5 +12,6 @@ data class Mecanico(
     val nombre: String,
     val especialidad: String,
     val experiencia : Int,
-    val tarifaHora: Double
+    val tarifaHora: Double,
+    var rutaImagen: String = "img/mecacnico.jpg"
 )

@@ -28,10 +28,8 @@ class MecanicoRepository(
     fun guardarMecanico(mecanico: Mecanico) {
         val index = mecanicos.indexOfFirst { it.id_mecanico == mecanico.id_mecanico }
         if (index != -1) {
-            // Edición de mecanico existente
             mecanicos[index] = mecanico
         } else {
-            // Creación de nueva mecanico (simulación de ID autoincremental)
             val nuevoId = (mecanicos.maxOfOrNull { it.id_mecanico } ?: 0) + 1
             mecanicos.add(mecanico.copy(id_mecanico = nuevoId))
         }
